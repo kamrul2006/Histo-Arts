@@ -12,10 +12,24 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomeLayOut />
-            }
+            },
+            {
+                path: '/All-Crafts',
+                element: <div>All-Crafts coming soon</div>
+            },
+            {
+                path: '/Add-Craft',
+                element: <div>Add-Crafts coming soon</div>
+            },
         ]
-
-
+    },
+    {
+        path: '/logIn',
+        element: <div>login coming soon</div>
+    },
+    {
+        path: '/signUp',
+        element: <div>SignUp coming soon</div>
     },
 ])
 
