@@ -3,6 +3,7 @@ import HomeLayOut from "./LayOuts/HomeLayOut";
 import RootLayOut from "./LayOuts/RootLayOut";
 import PrivetRout from "./Auth/Privet/Privetrought";
 import LoginPage from "./Auth/Log/LoginPage";
+import SignupPage from "./Auth/Log/SignupPage";
 
 
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/signUp',
-        element: <div>SignUp coming soon</div>
+        element: <SignupPage/>
     },
 ])
 

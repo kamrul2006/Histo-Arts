@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { sendEmailVerification } from "firebase/auth";
-import { Auth as auth } from "../../Firebase/Firebase.config";
+import { auth } from "../../Firebase/Firebase.config";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 
@@ -38,7 +38,7 @@ const SignupPage = () => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
         if (!Terms) {
-            setError('Pleas accept all terms and conditions.')
+            setError('Pleas accept all the terms and conditions.')
             return
         }
         else if (Password.length < 6) {
@@ -61,32 +61,17 @@ const SignupPage = () => {
 
                 // const newUser = { Email, Name, Photo, CreatedTIme: time }
 
-
-                //------------------------save new user to data base-----------------------
-                // fetch('https://coffi-back.vercel.app/users', {
-                //     method: "POST",
-                //     headers: {
-                //         'content-type': "application/json"
-                //     },
-                //     body: JSON.stringify(newUser)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log(data)
-                //         if (data.insertedId) {
-                //             Swal.fire({
-                //                 title: 'Successful',
-                //                 text: 'User Added Properly.',
-                //                 icon: 'success',
-                //                 confirmButtonText: "It's Great"
-                //             })
-                //             e.target.reset()
-                //         }
-                //     })
-
-
                 updatedProfile({ displayName: Name, photoURL: Photo })
                     .then(() => {
+
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "SignUp Successful.",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+
                         navigate('/')
                     }).catch(err => setError(err.massage))
 
@@ -96,30 +81,6 @@ const SignupPage = () => {
                         //                 console.log('Email verification sent!')
                     })
             });
-
-
-        //------------------------save new user to data base-----------------------
-        // fetch('https://coffi-back.vercel.app/users', {
-        //     method: "POST",
-        //     headers: {
-        //         'content-type': "application/json"
-        //     },
-        //     body: JSON.stringify(newUser)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.insertedId) {
-        //             Swal.fire({
-        //                 title: 'Successful',
-        //                 text: 'User Added Properly.',
-        //                 icon: 'success',
-        //                 confirmButtonText: "It's Great"
-        //             })
-        //             e.target.reset()
-        //         }
-        //     })
-
 
 
     }
@@ -146,8 +107,8 @@ const SignupPage = () => {
 
     return (
         <div className="bg-center bg-cover text-white bg-black"
-            // style={{ backgroundImage: `url(${bg})` }}
-            >
+        // style={{ backgroundImage: `url(${bg})` }}
+        >
 
             <Link to={"/"} className="w-fit">
                 <p className="text-3xl pl-10 pt-10 font-bold text-white flex items-center gap-3 w-fit">

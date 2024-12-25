@@ -24,7 +24,7 @@ const LoginPage = () => {
     //---------- Context use----------------------
     const { LoginUser, setUser, GoogleLogin } = useContext(AuthContext)
 
-    
+
     const HandleLogin = (e) => {
         e.preventDefault();
         setError(null)
@@ -63,21 +63,43 @@ const LoginPage = () => {
 
 
     return (
-        <div className="bg-center bg-cover text-white bg-black"
-        //  style={{ backgroundImage: `url(${bg})` }}
+        <div className="bg-center bg-cover text-white min-h-screen pb-10"
+            style={{ backgroundImage: `url('https://miro.medium.com/v2/resize:fit:1400/1*tDmrS-qRpP_qtgk-bgTgMQ.jpeg')` }}
         >
-            <Link to={"/"} className="w-fit">
-                <p className="text-3xl pl-10 pt-10 font-bold text-white flex items-center gap-3 w-fit">
-                    <img src="https://img.icons8.com/fluency/48/long-arrow-left.png" className="w-7" />
-                    Go back home
-                </p>
-            </Link>
-            <div className="min-h-screen flex items-center justify-center ">
+
+
+
+            <div className="bg-black mb-5 py-5 flex items-center justify-between px-2 md:px-20 flex-row-reverse">
+                <Link to={"/"} className="w-fit ">
+                    <p className="md:text-3xl text-xl pl-10 py-2 font-bold hover:text-yellow-500 text-white flex items-center gap-3 w-fit">
+                        <img src="https://img.icons8.com/fluency/48/long-arrow-left.png" className="w-7" />
+                        Go back home
+                    </p>
+                </Link>
+
+
+                {/* ---name and logo----- */}
+                <div className="flex items-center gap-3">
+                    <img src="https://img.icons8.com/pieces/64/palace.png" alt="🏰" className="w-7 md:w-11" />
+
+                    <Link to={'/'}>
+                        <button
+                            className="text-lg md:text-3xl font-bold font-serif hover:text-yellow-500">
+                            K-HistoCraft
+                        </button>
+                    </Link>
+                </div>
+            </div>
+
+
+
+            <div className="w-fit mx-auto  flex items-center justify-center bg-black/50 backdrop-blur rounded-xl">
 
                 <div className="p-8 rounded-lg  max-w-md w-full">
-                    <h2 className="text-3xl font-bold text-center text-white mb-6">Welcome Back</h2>
+                    <h2 className="md:text-3xl text-xl font-bold text-center text-white mb-6">Welcome Back</h2>
 
-                    <form onSubmit={HandleLogin} className="space-y-6">
+                    <form onSubmit={HandleLogin} className="md;space-y-6 space-y-3">
+
                         {/* Email Field */}
                         <div className="relative">
                             <label className="text-sm my-1">
@@ -87,7 +109,7 @@ const LoginPage = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                className="w-full px-4 py-2 border border-white-300 rounded-lg focus:outline-none focus:border-blue-500 peer"
+                                className="w-full text-black px-4 py-2 border border-white-300 rounded-lg focus:outline-none focus:border-blue-500 peer"
                                 placeholder="Enter Your Email. "
                                 required
                             />
@@ -109,7 +131,7 @@ const LoginPage = () => {
 
                             {/* --------------------------Forgot password section---------------------- */}
 
-                            <label className=" text-sm"><Link to='/login/forgetPassword' className="text-indigo-500 font-semibold hover:underline">Forgot password?</Link>
+                            <label className=" text-sm"><Link className="text-indigo-500 font-semibold hover:underline">Forgot password?</Link>
                             </label>
 
                             <button onClick={ShowPassWord} className="btn btn-ghost btn-xs absolute right-3 top-8 text-lg text-black">
@@ -130,8 +152,8 @@ const LoginPage = () => {
 
                     <div className="divider divider-info mt-8">or</div>
 
-                    <button onClick={HandleGoogleLogin} className="btn btn-sm rounded-full btn-warning w-full mt-1 mb-5">Log in With Google
-                        <img src="https://img.icons8.com/fluency/50/google-logo.png" alt="google-logo" className="w-5 shadow-lg border rounded-full" />
+                    <button onClick={HandleGoogleLogin} className="btn btn-sm rounded-full btn-warning w-full mt-1 mb-5 btn-outline">Log in With Google
+                        <img src="https://img.icons8.com/fluency/50/google-logo.png" alt="google-logo" className="w-5 shadow-lg " />
                     </button>
 
                     {/* Footer Text */}
