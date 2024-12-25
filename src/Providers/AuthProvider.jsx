@@ -3,9 +3,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import { Auth as auth } from "../Firebase/Firebase.config";
+import { auth } from "../Firebase/Firebase.config";
 import axios from "axios";
-
 
 
 //----------------the context here------------------
@@ -70,28 +69,28 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
-            // console.log('state captured', currentUser?.email);
+            console.log('state captured', currentUser?.email);
+            setLoading(false)
 
-            if (currentUser?.email) {
-                const user = { email: currentUser?.email };
+            // if (currentUser?.email) {
+            //     const user = { email: currentUser?.email };
 
-                axios.post('https://job-portal-server-one-alpha.vercel.app/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        // console.log('login token', res.data);
-                        setLoading(false);
-                    })
+            //     axios.post('https://job-portal-server-one-alpha.vercel.app/jwt', user, { withCredentials: true })
+            //         .then(res => {
+            //             // console.log('login token', res.data);
+            //             setLoading(false);
+            //         })
 
-            }
-            else {
-                axios.post('https://job-portal-server-one-alpha.vercel.app/logout', {}, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log('logout', res.data);
-                        setLoading(false);
-                    })
-            }
-
+            // }
+            // else {
+            //     axios.post('https://job-portal-server-one-alpha.vercel.app/logout', {}, {
+            //         withCredentials: true
+            //     })
+            //         .then(res => {
+            //             // console.log('logout', res.data);
+            //             setLoading(false);
+            //         })
+            // }
         })
 
         return () => {

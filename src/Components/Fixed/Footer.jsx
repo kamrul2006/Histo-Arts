@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FiPhone, FiMail } from "react-icons/fi";
-import { HiLocationMarker } from "react-icons/hi";
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
@@ -43,11 +42,11 @@ const Footer = () => {
                             </p>
                             <p className="flex items-center space-x-2">
                                 <FiMail />
-                                <span>info@gmail.com</span>
+                                <span>info1111@gmail.com</span>
                             </p>
                             <p className="flex items-center space-x-2">
-                                <HiLocationMarker />
-                                <span>72, Wall Street, King Road, Dhaka</span>
+                                <FiMail />
+                                <span>info2222@hotmail.com</span>
                             </p>
                         </div>
                     </div>
@@ -64,7 +63,7 @@ const Footer = () => {
 
                         <Link to={'/'}>
                             <button
-                                className="text-2xl md:text-3xl font-bold font-serif hover:text-yellow-500 w-fit">
+                                className="text-2xl md:text-4xl font-bold font-serif hover:text-yellow-500 w-fit">
                                 K-HistoCraft
                             </button>
                         </Link>
