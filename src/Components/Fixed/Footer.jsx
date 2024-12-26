@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 const Footer = () => {
     // const { user, } = useContext(AuthContext)
     return (
-        <div>
+        <div className="mt-5 md:mt-10">
             <footer className="  bg-[#ffffe4] text-black rounded px-5 md:px-0">
                 <div className="md:grid grid-cols-1 md:grid-cols-3  gap-10">
 
@@ -64,7 +64,7 @@ const Footer = () => {
                         <Link to={'/'}>
                             <button
                                 className="text-2xl md:text-4xl font-bold font-serif hover:text-yellow-500 w-fit">
-                                K-HistoCraft
+                            K-HistoArts
                             </button>
                         </Link>
                     </div>
@@ -75,7 +75,6 @@ const Footer = () => {
                             <div>
                                 <input
                                     type="text"
-                                    id="name"
                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-950"
                                     placeholder="Your Name"
                                 />
@@ -83,7 +82,6 @@ const Footer = () => {
                             <div>
                                 <input
                                     type="email"
-                                    id="email"
                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-950"
                                     placeholder="Your Email"
                                 />
@@ -111,7 +109,7 @@ const Footer = () => {
 
 
             <div className="mx-auto text-center bg-yellow-500 text-black py-2">
-                <p>Copyright © {new Date().getFullYear()} - All right reserved by <span className="font-serif font-bold text-center">K-HistoCraft</span></p>
+                <p>Copyright © {new Date().getFullYear()} - All right reserved by <span className="font-serif font-bold text-center">K-HistoArts</span></p>
             </div>
         </div>
     );

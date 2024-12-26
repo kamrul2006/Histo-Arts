@@ -13,8 +13,8 @@ const PrivetRout = ({ children }) => {
 
     if (loading) {
         return <div>
-            <div className="flex items-center justify-center min-h-screen bg-gray-100">
-                {loader}
+            <div className="flex items-center justify-center min-h-screen ">
+                <img src={loader} alt="loading"  className="rounded-full w-1/12 mx-auto"/>
             </div>
         </div>
     }

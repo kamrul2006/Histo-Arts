@@ -5,6 +5,10 @@ import PrivetRout from "./Auth/Privet/Privetrought";
 import LoginPage from "./Auth/Log/LoginPage";
 import SignupPage from "./Auth/Log/SignupPage";
 import Error from "./Components/Fixed/Error";
+import MyProfile from "./LayOuts/MyProfileLayout";
+import Myadded from "./Pages/Myadded";
+import MyLiked from "./Pages/MyLiked";
+import AALLCRAFT from "./Pages/AALLCRAFT";
 
 
 
@@ -20,7 +24,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/All-Crafts',
-                element: <PrivetRout><div>All-Crafts coming soon</div></PrivetRout>
+                element: <PrivetRout><AALLCRAFT /></PrivetRout>,
+                loader: () => fetch('http://localhost:5000/allcraft')
             },
             {
                 path: '/Add-Craft',
@@ -35,6 +40,26 @@ const router = createBrowserRouter([
     {
         path: '/signUp',
         element: <SignupPage />
+    },
+    {
+        path: '/MyProfile',
+        element: <PrivetRout><MyProfile /></PrivetRout>,
+        errorElement: <Error />,
+        children: [
+            {
+                path: '/MyProfile',
+                element: <PrivetRout></PrivetRout>
+            },
+            {
+                path: '/MyProfile/myAdded',
+                element: <PrivetRout><Myadded /></PrivetRout>,
+                loader: () => fetch('http://localhost:5000/allcraft')
+            },
+            {
+                path: '/MyProfile/myLiked',
+                element: <PrivetRout><MyLiked /></PrivetRout>
+            },
+        ]
     },
 ])
 

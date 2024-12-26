@@ -26,7 +26,7 @@ const NavbarPart = () => {
                         <Link to={'/'}>
                             <button
                                 className="text-lg md:text-3xl font-bold font-serif hover:text-yellow-500">
-                                K-HistoCraft
+                            K-HistoArts
                             </button>
                         </Link>
                     </div>
