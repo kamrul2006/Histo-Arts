@@ -4,6 +4,7 @@ import RootLayOut from "./LayOuts/RootLayOut";
 import PrivetRout from "./Auth/Privet/Privetrought";
 import LoginPage from "./Auth/Log/LoginPage";
 import SignupPage from "./Auth/Log/SignupPage";
+import Error from "./Components/Fixed/Error";
 
 
 
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayOut />,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
@@ -28,11 +30,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/logIn',
-        element: <LoginPage/>
+        element: <LoginPage />
     },
     {
         path: '/signUp',
-        element: <SignupPage/>
+        element: <SignupPage />
     },
 ])
 
