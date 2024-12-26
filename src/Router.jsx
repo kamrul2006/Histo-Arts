@@ -9,6 +9,7 @@ import MyProfile from "./LayOuts/MyProfileLayout";
 import Myadded from "./Pages/Myadded";
 import MyLiked from "./Pages/MyLiked";
 import AALLCRAFT from "./Pages/AALLCRAFT";
+import MyInfo from "./Pages/MyInfo";
 
 
 
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/MyProfile',
-                element: <PrivetRout></PrivetRout>
+                element: <PrivetRout><MyInfo/></PrivetRout>
             },
             {
                 path: '/MyProfile/myAdded',

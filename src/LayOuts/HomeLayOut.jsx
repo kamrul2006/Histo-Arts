@@ -1,9 +1,12 @@
+import BannerPart from "../Components/Used/BannerPart";
 
 const HomeLayOut = () => {
     return (
         <div>
 
-fff
+            <BannerPart />
+
+
         </div>
     );
 };
