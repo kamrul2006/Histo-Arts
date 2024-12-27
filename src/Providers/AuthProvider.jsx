@@ -72,25 +72,25 @@ const AuthProvider = ({ children }) => {
             console.log('state captured', currentUser?.email);
             setLoading(false)
 
-            // if (currentUser?.email) {
-            //     const user = { email: currentUser?.email };
+            if (currentUser?.email) {
+                const user = { email: currentUser?.email };
 
-            //     axios.post('https://job-portal-server-one-alpha.vercel.app/jwt', user, { withCredentials: true })
-            //         .then(res => {
-            //             // console.log('login token', res.data);
-            //             setLoading(false);
-            //         })
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        // console.log('login token', res.data);
+                        setLoading(false);
+                    })
 
-            // }
-            // else {
-            //     axios.post('https://job-portal-server-one-alpha.vercel.app/logout', {}, {
-            //         withCredentials: true
-            //     })
-            //         .then(res => {
-            //             // console.log('logout', res.data);
-            //             setLoading(false);
-            //         })
-            // }
+            }
+            else {
+                axios.post('hhttp://localhost:5000/logout', {}, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        // console.log('logout', res.data);
+                        setLoading(false);
+                    })
+            }
         })
 
         return () => {

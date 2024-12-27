@@ -15,6 +15,9 @@ const HomeLayOut = () => {
             <FeaturedArtifacts />
 
 
+
+
+
         </div>
     );
 };

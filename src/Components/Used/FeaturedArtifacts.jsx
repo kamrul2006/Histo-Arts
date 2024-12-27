@@ -42,7 +42,7 @@ const FeaturedArtifacts = () => {
                                     <div className="card-actions justify-between">
                                         <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
 
-                                        <Link>
+                                        <Link to={`/All-Crafts/details/${Craft._id}`}>
                                             <button className="btn btn-primary btn-sm btn-outline rounded-full">  View Details</button>
                                         </Link>
                                     </div>

@@ -1,12 +1,13 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import nodata from "../assets/nodata.jpg"
 import { useEffect } from "react";
+import { Slide } from "react-awesome-reveal";
 
 
 const AALLCRAFT = () => {
-        useEffect(() => {
-            document.title = "K-HistoArts || AllCrafts"
-        }, [])
+    useEffect(() => {
+        document.title = "K-HistoArts || AllCrafts"
+    }, [])
 
     const data = useLoaderData()
 
@@ -31,57 +32,44 @@ const AALLCRAFT = () => {
 
 
                 {/* --------------------------all visa--------------------- */}
-                {data.length == 0 ? <div>
-                    <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>No Visa Available</h1>
-                    <img src={nodata} className='mx-auto w-1/2' />
-                </div> :
+                {data.length == 0 ?
+                    <div>
+                        <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>No Visa Available</h1>
+                        <img src={nodata} className='mx-auto w-1/2' />
+                    </div> :
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-10 md:mx-10 my-10">
+                        {data.map(Craft =>
+                            <div key={Craft._id}>
+                                <Slide>
+                                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                                        <figure>
+                                            <img
+                                                src={Craft.artifactImage}
+                                                alt="craft"
+                                                className="w-full h-[200px]" />
+                                        </figure>
+                                        <div className="card-body">
+                                            <h2 className="card-title">{Craft.artifactName}</h2>
 
+                                            <p className="text-left h-[120px]"><b>Historical Context:</b> {Craft.historicalContext}</p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-10 md:mx-10 my-10">
-                        {data.map(craft =>
-                            <div
-                                className=" shadow-md my-4  mx-2 border rounded-md p-2"
-                                key={craft._id}>
+                                            <div className="card-actions justify-between">
+                                                <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
 
-                                <div className='bg-[#feffbdc2] py-4'>
-                                    <div className="w-full h-[200px] px-2 mx-auto">
-                                        <img src={craft.artifactImage}
-                                            className="w-full h-full object-cover rounded-xl shadow-xl border border-black mx-auto" />
-                                    </div>
-
-                                    <div >
-                                        {/* ----------------------text-------------------------- */}
-                                        <div className='md:py-5 text-center'>
-
-                                            <p className='bg-white text-2xl font-black font-serif italic rounded-full mb-2 w-full'> {craft.countryName}</p>
-
-                                            <h1 className=" font-bold">Visa Type : {craft.visaType}</h1>
-
-                                            <p className=" py-3 ">
-                                                Visa Fee: {craft.fee ? craft.fee : 300} $
-                                            </p>
-
-                                            <p className=" ">
-                                                Visa Application Method: {craft.applicationMethod}
-                                            </p>
-
-                                            <p className=" py-3 ">
-                                                Visa Processing Time: {craft.processingTime}
-                                            </p>
-
-                                            <p className=" ">
-                                                Visa Validity: {craft.validity ? craft.validity : "5 years"}
-                                            </p>
-
+                                                <Link to={`/All-Crafts/details/${Craft._id}`}>
+                                                    <button className="btn btn-primary btn-sm btn-outline rounded-full">  View Details</button>
+                                                </Link>
+                                            </div>
                                         </div>
-
                                     </div>
-                                </div>
-                            </div>)}
-                    </div>}
+                                </Slide>
+                            </div>)
+                        }
+                    </div>
+                }
+
             </div>
-        </div>
-    );
+        </div>)
 };
 
 export default AALLCRAFT;

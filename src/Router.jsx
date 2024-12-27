@@ -11,6 +11,7 @@ import MyLiked from "./Pages/MyLiked";
 import AALLCRAFT from "./Pages/AALLCRAFT";
 import MyInfo from "./Pages/MyInfo";
 import AddCraft from "./Pages/AddCrafts";
+import CraftDetails from "./Pages/CraftDetails";
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path: '/Add-Craft',
                 element: <PrivetRout><AddCraft/></PrivetRout>
             },
+            {
+                path: '/All-Crafts/details/:id',
+                element: <PrivetRout><CraftDetails/></PrivetRout>,
+                loader: ({params}) => fetch(`http://localhost:5000/allcraft/${params.id}`)            },
         ]
     },
     {
