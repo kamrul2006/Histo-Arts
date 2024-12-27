@@ -11,7 +11,7 @@ const list = <>
 
 const NavbarPart = () => {
     const { user, UserSignOut } = useContext(AuthContext)
-
+    // console.log(user?.photoURL)
 
     return (
         <div className="px-5 md:px-20 py-1 md:py-2 bg-orange-100">
@@ -26,7 +26,7 @@ const NavbarPart = () => {
                         <Link to={'/'}>
                             <button
                                 className="text-lg md:text-3xl font-bold font-serif hover:text-yellow-500">
-                            K-HistoArts
+                                K-HistoArts
                             </button>
                         </Link>
                     </div>
@@ -63,7 +63,7 @@ const NavbarPart = () => {
                         {user ?
                             <div className="dropdown dropdown-left dropdown-hover">
                                 <div tabIndex={0} role="button" className="w-10 h-10 md:w-14 md:h-14">
-                                    <img src={user.photoURL} className="w-full h-full object-cover border-2 border-yellow-400 rounded-full" />
+                                    {user.photoURL && <img src={`${user.photoURL}`} className="w-full h-full object-cover border-2 border-yellow-400 rounded-full" />}
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                                     <li>

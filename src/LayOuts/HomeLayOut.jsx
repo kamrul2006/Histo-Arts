@@ -1,4 +1,5 @@
 import BannerPart from "../Components/Used/BannerPart";
+import FeaturedArtifacts from "../Components/Used/FeaturedArtifacts";
 
 const HomeLayOut = () => {
     return (
@@ -6,6 +7,7 @@ const HomeLayOut = () => {
 
             <BannerPart />
 
+            <FeaturedArtifacts />
 
         </div>
     );
