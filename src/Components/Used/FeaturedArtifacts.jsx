@@ -23,15 +23,6 @@ const FeaturedArtifacts = () => {
                 Here are some of our most liked arts. to see all arts click on the view all Art button aor for details click on View Details .
             </p>
 
-            <div className="mx-auto mb-5">
-                <Link to={"/All-Crafts"}>
-                    <button className='btn btn-outline btn-sm md:btn-md'>
-                    View Details
-                    </button>
-                </Link>
-            </div>
-
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-5 md:mx-16">
                 {crafts.slice(Math.max(crafts.length - 6, 0)).map(Craft =>
                     <div key={Craft._id}>
@@ -46,13 +37,13 @@ const FeaturedArtifacts = () => {
                                 <div className="card-body">
                                     <h2 className="card-title">{Craft.artifactName}</h2>
 
-                                    <p className="text-left h-[80px]"><b>Historical Context:</b> {Craft.historicalContext}</p>
+                                    <p className="text-left h-[120px]"><b>Historical Context:</b> {Craft.historicalContext}</p>
 
                                     <div className="card-actions justify-between">
                                         <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
 
                                         <Link>
-                                            <button className="btn btn-primary btn-sm btn-outline rounded-full">More Info</button>
+                                            <button className="btn btn-primary btn-sm btn-outline rounded-full">  View Details</button>
                                         </Link>
                                     </div>
                                 </div>
@@ -61,7 +52,13 @@ const FeaturedArtifacts = () => {
                     </div>)
                 }
             </div>
-
+            <div className="mx-auto my-5 md:mt-20">
+                <Link to={"/All-Crafts"}>
+                    <button className='btn btn-outline btn-sm md:btn-md rounded-full'>
+                        See All Artifacts.
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 };

@@ -14,7 +14,7 @@ const NavbarPart = () => {
     // console.log(user?.photoURL)
 
     return (
-        <div className="px-5 md:px-20 py-1 md:py-2 bg-orange-100">
+        <div className="px-5 md:px-20 bg-white/50 backdrop-blur sticky top-0 z-50 shadow">
             <div className="navbar">
                 <div className="navbar-start">
                     {/* ----------------------------NAVBAr for large device started---------------------------- */}

@@ -1,8 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import nodata from "../assets/nodata.jpg"
+import { useEffect } from "react";
 
 
 const AALLCRAFT = () => {
+        useEffect(() => {
+            document.title = "K-HistoArts || AllCrafts"
+        }, [])
 
     const data = useLoaderData()
 

@@ -10,6 +10,7 @@ import Myadded from "./Pages/Myadded";
 import MyLiked from "./Pages/MyLiked";
 import AALLCRAFT from "./Pages/AALLCRAFT";
 import MyInfo from "./Pages/MyInfo";
+import AddCraft from "./Pages/AddCrafts";
 
 
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/Add-Craft',
-                element: <PrivetRout><div>Add-Crafts coming soon</div></PrivetRout>
+                element: <PrivetRout><AddCraft/></PrivetRout>
             },
         ]
     },
