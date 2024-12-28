@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Fade, Slide } from "react-awesome-reveal";
-import { Link, useLoaderData, } from "react-router-dom";
+import { Link, useLoaderData, useRevalidator, } from "react-router-dom";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { SiCmake } from "react-icons/si";
 import { LuClipboardType } from "react-icons/lu";
@@ -16,26 +16,27 @@ import useAxiosSecure from "../hooks/useAxiocSec";
 const dataDetails = () => {
     const axiosSec = useAxiosSecure()
     const data = useLoaderData()
+    const { revalidate } = useRevalidator();
     const { user } = useContext(AuthContext)
     // console.log(data)
-
+    const [liked, setLiked] = useState(false)
 
 
     const [LInfo, SetLInfo] = useState([])
     useEffect(() => {
         axiosSec.get(`/liked?email=${user.email}`)
             .then(res => SetLInfo(res.data))
-    }, [])
+    }, [liked])
     // console.log(LInfo)
 
 
-    const [liked, setLiked] = useState(false)
 
-    const matchingIds = LInfo.filter((i) => i.data._id === data._id)
-    // console.log(matchingIds);
+
+    const matchingIds = LInfo.find((i) => i.likeId === data._id)
+    console.log(matchingIds);
 
     useEffect(() => {
-        if (matchingIds.length > 0) {
+        if (matchingIds) {
             setLiked(true)
         }
         else {
@@ -46,9 +47,9 @@ const dataDetails = () => {
 
     const handleSubmit = () => {
 
-        const formData = { data, email: user.email }
+        const formData = { likeId: data._id, data, email: user.email }
         // console.log(formData);
-        if (matchingIds.length > 1) {
+        if (matchingIds) {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -68,6 +69,7 @@ const dataDetails = () => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    revalidate()
                     // console.log(data)
                     if (data.insertedId) {
                         Swal.fire({
@@ -83,9 +85,44 @@ const dataDetails = () => {
     };
 
 
+    // // -----------------------removing data---------------------
+    const handleRemove = () => {
+        // console.log(id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to un like this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Unlike it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/liked/${matchingIds.likeId}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            // console.log(data);
+                            if (data.deletedCount > 0) {
+                                revalidate()
+                                setLiked(false)
+                                Swal.fire({
+                                    title: "Unlike!",
+                                    text: "Craft has been Unlike.",
+                                    icon: "success"
+                                });
+                            }
+                        });
+                }
+            })
+    }
+
     const HandleLike = () => {
         setLiked(!liked)
-        { !liked && handleSubmit() }
+        { liked === false ? handleSubmit() : handleRemove() }
     }
 
 
@@ -151,7 +188,13 @@ const dataDetails = () => {
                                     <button>Total Like ({data.Like ? data.Like : 0})</button>
 
                                     <div className="flex items-center justify-center flex-col">
-                                        <button onClick={HandleLike} className={`btn text-xl btn-circle ${liked ? "btn-primary" : "btn-neutral"}`}>{liked ? <BiSolidLike /> : <BiSolidDislike />}</button>
+                                        {liked && <button onClick={HandleLike} className={`btn text-xl btn-circle btn-primary `}><BiSolidLike /></button>}
+
+                                        {!liked && <button onClick={HandleLike} className={`btn text-xl btn-circle btn-neutral `}><BiSolidDislike /></button>}
+
+
+                                        {/* <button onClick={HandleLike} className={`btn text-xl btn-circle ${liked ? "btn-primary" : "btn-neutral"}`}>{liked ? <BiSolidLike /> : }</button> */}
+
                                         {liked && <Slide direction="down" duration={500}><p className="text-primary font-mono font-bold text-sm">Liked</p></Slide>}
                                     </div>
                                 </div>

@@ -1,0 +1,6 @@
+.active {
+    background-color:mediumturquoise;
+    border-radius: 5px 5px 5px 5px;
+    border-right: 3px red solid;
+    border-left: 3px red solid;
+}

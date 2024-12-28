@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import "./Active.css"
 
 
 const list = <>
@@ -50,8 +51,8 @@ const NavbarPart = () => {
                         </ul>
                     </div>
 
-                    <div className=" hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                    <div className=" hidden lg:flex ">
+                        <ul className="menu menu-horizontal px-1 space-x-4">
                             {list}
                         </ul>
                     </div>

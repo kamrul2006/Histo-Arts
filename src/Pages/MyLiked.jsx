@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiocSec";
 import nodata from "../assets/nodata.jpg"
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -9,11 +11,47 @@ const MyLiked = () => {
     const axiosSec = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const [data, setData] = useState([])
+    const [load, reload] = useState(true)
 
     useEffect(() => {
         axiosSec.get(`/liked?email=${user.email}`)
             .then(res => setData(res.data))
-    }, [])
+    }, [load])
+
+
+    // // -----------------------removing data---------------------
+    const handleRemove = (id) => {
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to unlike this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Unlike it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/liked/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            reload(!load)
+                            // console.log(data);
+                            if (data.deletedCount > 0) {
+                                Swal.fire({
+                                    title: "Unlike!",
+                                    text: "Craft has been Unlike.",
+                                    icon: "success"
+                                });
+                            }
+                        });
+                }
+            })
+    }
 
 
     return (
@@ -26,7 +64,7 @@ const MyLiked = () => {
                     <img src={nodata} className='mx-auto w-1/2' />
                 </div> :
                 <div className="overflow-x-auto w-full">
-                    <table className="table w-full">
+                    <table className="table w-full ">
                         {/* head */}
                         <thead>
                             <tr>
@@ -35,6 +73,7 @@ const MyLiked = () => {
                                 <th>Details</th>
                                 <th>Added By</th>
                                 <th>Unlike</th>
+                                <th>Details</th>
                             </tr>
                         </thead>
 
@@ -69,8 +108,13 @@ const MyLiked = () => {
                                     </td>
 
                                     <th>
-                                        <button className="btn btn-info btn-outline btn-xs">UnLike</button>
+                                        <button onClick={() => handleRemove(D.likeId)} className="btn btn-info btn-outline btn-xs">UnLike</button>
                                     </th>
+
+                                    <td>
+                                        <Link to={`/All-Crafts/details/${D.data._id}`}><button className="btn btn-xs  text-xs btn-warning mx-2 md:mx-0 btn-outline">Details
+                                        </button></Link>
+                                    </td>
                                 </tr>
                             )}
 

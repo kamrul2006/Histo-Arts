@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import nodata from "../assets/nodata.jpg"
@@ -202,6 +202,10 @@ const Myadded = () => {
                       <button onClick={() => handleRemove(craft._id)} className="btn btn-sm text-xs btn-error mx-2 md:mx-0 btn-outline">
                         Delete
                       </button>
+
+                      <Link to={`/All-Crafts/details/${craft._id}`}><button className="btn btn-sm text-xs btn-info mx-2 md:mx-0 btn-outline">Details
+                      </button></Link>
+
                     </div>
 
                   </div>
