@@ -48,7 +48,17 @@ const dataDetails = () => {
 
         const formData = { data, email: user.email }
         // console.log(formData);
-        if (matchingIds.length == 0) {
+        if (matchingIds.length > 1) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You already liked it go to My liked page.",
+                showConfirmButton: false,
+                timer: 1550
+            });
+        }
+        else {
+
             fetch('http://localhost:5000/liked', {
                 method: "POST",
                 headers: {
@@ -69,15 +79,6 @@ const dataDetails = () => {
                         });
                     }
                 }).catch(ree => console.log(ree))
-        }
-        else {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "You already liked it go to My liked page.",
-                showConfirmButton: false,
-                timer: 1550
-            });
         }
     };
 
