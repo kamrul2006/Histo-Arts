@@ -1,58 +1,87 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Fade, Slide } from "react-awesome-reveal";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, } from "react-router-dom";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { SiCmake } from "react-icons/si";
 import { LuClipboardType } from "react-icons/lu";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPenNib } from "react-icons/fa";
-import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
-import { useContext, useState } from "react";
+import { BiCalendar, BiSolidDislike, BiSolidLike } from "react-icons/bi";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosSecure from "../hooks/useAxiocSec";
+
 
 const dataDetails = () => {
-    const navigate = useNavigate()
+    const axiosSec = useAxiosSecure()
     const data = useLoaderData()
     const { user } = useContext(AuthContext)
     // console.log(data)
 
 
-    const handleSubmit = () => {
 
+    const [LInfo, SetLInfo] = useState([])
+    useEffect(() => {
+        axiosSec.get(`/liked?email=${user.email}`)
+            .then(res => SetLInfo(res.data))
+    }, [])
+    // console.log(LInfo)
 
-        const formData = { data, email: user.email }
-
-
-        console.log(formData);
-
-
-        fetch('http://localhost:5000/liked', {
-            method: "POST",
-            headers: {
-                'content-type': "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                if (data.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "SignUp Successful.",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-
-                    navigate('/MyProfile/myLiked')
-                }
-
-            }).catch(ree => console.log(ree))
-    };
 
     const [liked, setLiked] = useState(false)
+
+    const matchingIds = LInfo.filter((i) => i.data._id === data._id)
+    // console.log(matchingIds);
+
+    useEffect(() => {
+        if (matchingIds.length > 0) {
+            setLiked(true)
+        }
+        else {
+            setLiked(false)
+        }
+    }, [LInfo])
+
+
+    const handleSubmit = () => {
+
+        const formData = { data, email: user.email }
+        // console.log(formData);
+        if (matchingIds.length == 0) {
+            fetch('http://localhost:5000/liked', {
+                method: "POST",
+                headers: {
+                    'content-type': "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data)
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "You liked the craft and it is added to My liked page.",
+                            showConfirmButton: false,
+                            timer: 1550
+                        });
+                    }
+                }).catch(ree => console.log(ree))
+        }
+        else {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You already liked it go to My liked page.",
+                showConfirmButton: false,
+                timer: 1550
+            });
+        }
+    };
+
+
     const HandleLike = () => {
         setLiked(!liked)
         { !liked && handleSubmit() }
@@ -109,6 +138,9 @@ const dataDetails = () => {
                                     <p className="text-left flex items-center gap-2 "><RiCompassDiscoverLine /> <b>Discovered By:</b> {data.discoveredBy}</p>
                                     <p className="text-left flex items-center gap-2"><SiCmake /> <b>Created at :</b> About {data.createdAt}</p>
                                     <p className="text-left flex items-center gap-2 "><LuClipboardType /> <b>Artifact Type:</b> {data.artifactType}</p>
+
+                                    <p className="text-left flex items-center gap-2 "><BiCalendar /> <b>Discoverd At :</b> {data.discoveredAt}</p>
+
                                     <p className="text-left flex items-center gap-2 "><FaMapLocationDot /> <b>Present Location:</b> {data.presentLocation}</p>
                                 </div>
 

@@ -43,7 +43,7 @@ const AddCraft = () => {
             Like: 0
         }
 
-        console.log(formData);
+        // console.log(formData);
 
 
         fetch('http://localhost:5000/allcraft', {
