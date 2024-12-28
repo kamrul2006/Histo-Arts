@@ -1,23 +1,64 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Fade, Slide } from "react-awesome-reveal";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { SiCmake } from "react-icons/si";
 import { LuClipboardType } from "react-icons/lu";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPenNib } from "react-icons/fa";
 import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const dataDetails = () => {
-
+    const navigate = useNavigate()
     const data = useLoaderData()
+    const { user } = useContext(AuthContext)
     // console.log(data)
+
+
+    const handleSubmit = () => {
+
+
+        const formData = { data, email: user.email }
+
+
+        console.log(formData);
+
+
+        fetch('http://localhost:5000/liked', {
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "SignUp Successful.",
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+
+                    navigate('/MyProfile/myLiked')
+                }
+
+            }).catch(ree => console.log(ree))
+    };
 
     const [liked, setLiked] = useState(false)
     const HandleLike = () => {
         setLiked(!liked)
+        { !liked && handleSubmit() }
     }
+
+
 
 
     return (

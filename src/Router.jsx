@@ -64,8 +64,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/MyProfile/myLiked',
-                element: <PrivetRout><MyLiked /></PrivetRout>
-            },
+                element: <PrivetRout><MyLiked /></PrivetRout>,
+                loader: () => fetch('http://localhost:5000/liked')            },
         ]
     },
 ])
