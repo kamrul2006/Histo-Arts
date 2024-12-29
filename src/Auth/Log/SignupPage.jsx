@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { sendEmailVerification } from "firebase/auth";
@@ -10,6 +10,10 @@ import Footer from "../../Components/Fixed/Footer";
 
 
 const SignupPage = () => {
+    useEffect(() => {
+            document.title = "K-HistoArts || Sign Up"
+        }, [])
+    
 
     const navigate = useNavigate()
     //--------------------------Context use--------------------------
@@ -153,7 +157,7 @@ const SignupPage = () => {
                                     type="Text"
                                     id="name"
                                     name="name"
-                                    className="w-full px-4 py-2 border border-white-300 rounded-lg focus:outline-none text-black focus:border-blue-500 peer"
+                                    className="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:outline-none text-black focus:border-blue-500 peer"
                                     placeholder="First name + Last Name"
                                     required
                                 />
@@ -167,7 +171,7 @@ const SignupPage = () => {
                                     type="text"
                                     id="photo"
                                     name="photoUrl"
-                                    className="w-full px-4 py-2 border border-white-300 rounded-lg focus:outline-none focus:border-blue-500 peer"
+                                    className="w-full text-black px-4 py-2 border border-yellow-300 rounded-lg focus:outline-none focus:border-blue-500 peer"
                                     placeholder="Photo URL"
                                     required
                                 />
@@ -181,7 +185,7 @@ const SignupPage = () => {
                                     type="email"
                                     id="email"
                                     name="email"
-                                    className="w-full px-4 py-2 border border-white-300 rounded-lg focus:outline-none focus:border-blue-500 peer text-black"
+                                    className="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:outline-none focus:border-blue-500 peer text-black"
                                     placeholder="Email "
                                     required
                                 />
@@ -195,7 +199,7 @@ const SignupPage = () => {
                                     type={show ? "text" : "password"}
                                     id="password"
                                     name="password"
-                                    className="w-full px-4 py-2 border border-white-300 rounded-lg focus:outline-none focus:border-blue-500 peer text-black"
+                                    className="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:outline-none focus:border-blue-500 peer text-black"
                                     placeholder="Password"
                                     required
                                 />
@@ -206,8 +210,8 @@ const SignupPage = () => {
 
                             <div className="my-2">
                                 <label className="cursor-pointer flex items-center gap-2">
-                                    <input type="checkbox" name="terms" className="checkbox checkbox-info" />
-                                    <span className=" text-blue-500">Accept all terms and conditions</span>
+                                    <input type="checkbox" name="terms" className=" rounded-full border-red-500 border-2 w-5 h-5"  defaultChecked/>
+                                    <span className=" text-white" >Accept all terms and conditions.</span>
                                 </label>
                             </div>
 

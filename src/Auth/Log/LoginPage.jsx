@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -9,6 +9,11 @@ import Swal from "sweetalert2";
 
 
 const LoginPage = () => {
+    useEffect(() => {
+        document.title = "K-HistoArts || Log In"
+    }, [])
+
+
     const location = useLocation()
     // console.info(location)
 
@@ -38,13 +43,13 @@ const LoginPage = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user)
-                  Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Log in Successful.",
-                            showConfirmButton: false,
-                            timer: 1300
-                        });
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Log in Successful.",
+                    showConfirmButton: false,
+                    timer: 1300
+                });
                 navigate(location.state ? location.state : '/')
             })
             .catch((error) => {

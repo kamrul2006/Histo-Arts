@@ -4,7 +4,7 @@ import Footer from "../Components/Fixed/Footer";
 
 const RootLayOut = () => {
     return (
-        <div>
+        <div  className="md:max-w-7xl mx-auto border-x-2" >
             
             <NavbarPart />
 

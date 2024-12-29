@@ -1,14 +1,21 @@
-import { useContext, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData, useRevalidator } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import nodata from "../assets/nodata.jpg"
+import { Fade } from 'react-awesome-reveal';
 
 
 
 const Myadded = () => {
-  const { user } = useContext(AuthContext)
+  useEffect(() => {
+    document.title = "K-HistoArts || My Added"
+  }, [])
 
+
+
+  const { user } = useContext(AuthContext)
+  const { revalidate } = useRevalidator();
   const data = useLoaderData()
 
   const myCraft = data.filter(data => data.adderInfo.email == user.email);
@@ -121,6 +128,7 @@ const Myadded = () => {
           })
         }
         handleButtonClick()
+        revalidate()
       })
   }
 
@@ -150,67 +158,68 @@ const Myadded = () => {
           <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>You added no artifacts</h1>
           <img src={nodata} className='mx-auto w-1/2' />
         </div> :
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-10 md:mx-10 my-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 mx-10 md:mx-10 my-10">
             {AllCraft.map(craft =>
               <div
                 className=" shadow-md my-4  mx-2 border rounded-md p-2"
                 key={craft._id}>
 
-                <div className='bg-[#feffbdc2] py-4'>
-                  <div className="w-full h-[200px] px-2 mx-auto">
-                    <img src={craft.artifactImage}
-                      className="w-full h-full object-cover rounded-xl shadow-xl border border-black mx-auto" />
-                  </div>
-
-                  <div >
-                    {/* ----------------------text-------------------------- */}
-                    <div className='md:py-5 text-center'>
-
-                      <p className='bg-white text-2xl font-black font-serif italic rounded-full mb-2 w-full'> {craft.artifactName}.</p>
-
-                      <h1 className=" font-bold"> Created at: {craft.createdAt}.</h1>
-
-                      <p className=" ">
-                        Type : {craft.artifactType}.
-                      </p>
-
-                      <p className="">
-                        Discoverd by : {craft.discoveredBy} .
-                      </p>
-
-                      <p className="">
-                        Location : {craft.presentLocation}.
-                      </p>
-
+                <Fade duration={1600}>
+                  <div className='bg-[#feffbdc2] py-4'>
+                    <div className="w-full h-[200px] px-2 mx-auto">
+                      <img src={craft.artifactImage}
+                        className="w-full h-full object-cover rounded-xl shadow-xl border border-black mx-auto" />
                     </div>
 
+                    <div >
+                      {/* ----------------------text-------------------------- */}
+                      <div className='md:py-5 text-center h-[200px]'>
 
-                    {/* --------------buttons---------------------- */}
-                    <div className="flex justify-center gap-5">
+                        <p className='bg-white text-2xl font-black font-serif italic rounded-full mb-2 w-full'> {craft.artifactName}.</p>
 
-                      {/*-----update */}
+                        <h1 className=" font-bold"> Created at: {craft.createdAt}.</h1>
 
-                      <button onClick={() => {
-                        ModalData(craft._id)
-                        setModalOpen(true)
-                      }} className="btn btn-outline  text-xs btn-sm btn-success">
-                        Update
-                      </button>
+                        <p className=" ">
+                          Type : {craft.artifactType}.
+                        </p>
+
+                        <p className="">
+                          Discoverd by : {craft.discoveredBy} .
+                        </p>
+
+                        <p className="">
+                          Location : {craft.presentLocation}.
+                        </p>
+
+                      </div>
 
 
-                      {/* -----delete */}
-                      <button onClick={() => handleRemove(craft._id)} className="btn btn-sm text-xs btn-error mx-2 md:mx-0 btn-outline">
-                        Delete
-                      </button>
+                      {/* --------------buttons---------------------- */}
+                      <div className="flex justify-center gap-5">
 
-                      <Link to={`/All-Crafts/details/${craft._id}`}><button className="btn btn-sm text-xs btn-info mx-2 md:mx-0 btn-outline">Details
-                      </button></Link>
+                        {/*-----update */}
+
+                        <button onClick={() => {
+                          ModalData(craft._id)
+                          setModalOpen(true)
+                        }} className="btn btn-outline  text-xs btn-sm btn-success">
+                          Update
+                        </button>
+
+
+                        {/* -----delete */}
+                        <button onClick={() => handleRemove(craft._id)} className="btn btn-sm text-xs btn-error mx-2 md:mx-0 btn-outline">
+                          Delete
+                        </button>
+
+                        <Link to={`/All-Crafts/details/${craft._id}`}><button className="btn btn-sm text-xs btn-info mx-2 md:mx-0 btn-outline">Details
+                        </button></Link>
+
+                      </div>
 
                     </div>
-
                   </div>
-                </div>
-
+                </Fade>
 
 
                 {modalOpen && <div

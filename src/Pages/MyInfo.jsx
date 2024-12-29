@@ -20,9 +20,7 @@ const MyInfo = () => {
 
                             Welcome
 
-                            To
-                            <span className="text-black"> Lingo</span>
-                            <span className="text-blue-500"> Bingo</span></p>
+                            To <span className="text-blue-500">K-HistoArts</span></p>
                     </div>
 
                     <div className="flex items-center justify-between gap-5 ">

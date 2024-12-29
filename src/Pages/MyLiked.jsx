@@ -4,10 +4,17 @@ import useAxiosSecure from "../hooks/useAxiocSec";
 import nodata from "../assets/nodata.jpg"
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Button } from "flowbite-react";
 
 
 
 const MyLiked = () => {
+    useEffect(() => {
+        document.title = "K-HistoArts || My Liked"
+    }, [])
+
+
+
     const axiosSec = useAxiosSecure()
     const { user } = useContext(AuthContext)
     const [data, setData] = useState([])
@@ -55,7 +62,10 @@ const MyLiked = () => {
 
 
     return (
-        <div>
+        <div className="border">
+            <div className="text-center text-2xl py-5 bg-amber-200">
+                My liked artifacts
+            </div>
 
 
             {data.length == 0 ?
@@ -63,8 +73,8 @@ const MyLiked = () => {
                     <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>No Liked Artifacts.</h1>
                     <img src={nodata} className='mx-auto w-1/2' />
                 </div> :
-                <div className="overflow-x-auto w-full">
-                    <table className="table w-full ">
+                <div className=" w-full">
+                    <table className="table w-full overflow-x-scroll z-10">
                         {/* head */}
                         <thead>
                             <tr>
@@ -117,13 +127,14 @@ const MyLiked = () => {
                                     </td>
                                 </tr>
                             )}
-
-
                         </tbody>
                     </table>
                 </div>
             }
 
+            <div className="mx-auto myt3 md:mt-10 bg-amber-200 flex justify-center py-4">
+                <Link to={'/All-Crafts'}><Button pill gradientDuoTone="purpleToBlue"><p className="text-base px-5">Go to All-Arts</p></Button></Link>
+            </div>
 
         </div >
     );

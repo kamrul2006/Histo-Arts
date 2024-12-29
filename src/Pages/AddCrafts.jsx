@@ -6,7 +6,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 const AddCraft = () => {
         useEffect(() => {
-            document.title = "K-HistoArts || Add Craft"
+            document.title = "K-HistoArts || Add Arts"
         }, [])
 
     const navigate = useNavigate()
