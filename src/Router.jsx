@@ -12,6 +12,7 @@ import AALLCRAFT from "./Pages/AALLCRAFT";
 import MyInfo from "./Pages/MyInfo";
 import AddCraft from "./Pages/AddCrafts";
 import CraftDetails from "./Pages/CraftDetails";
+import AboutUs from "./Components/Used/AboutUs";
 
 
 
@@ -28,16 +29,21 @@ const router = createBrowserRouter([
             {
                 path: '/All-Crafts',
                 element: <PrivetRout><AALLCRAFT /></PrivetRout>,
-                loader: () => fetch('http://localhost:5000/allcraft')
+                loader: () => fetch('https://historical-artifacts-tracher-server.vercel.app/allcraft')
             },
             {
                 path: '/Add-Craft',
-                element: <PrivetRout><AddCraft/></PrivetRout>
+                element: <PrivetRout><AddCraft /></PrivetRout>
             },
             {
                 path: '/All-Crafts/details/:id',
-                element: <PrivetRout><CraftDetails/></PrivetRout>,
-                loader: ({params}) => fetch(`http://localhost:5000/allcraft/${params.id}`)            },
+                element: <PrivetRout><CraftDetails /></PrivetRout>,
+                loader: ({ params }) => fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${params.id}`)
+            },
+            {
+                path: '/abutUs',
+                element: <AboutUs/>
+            },
         ]
     },
     {
@@ -55,17 +61,18 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/MyProfile',
-                element: <PrivetRout><MyInfo/></PrivetRout>
+                element: <PrivetRout><MyInfo /></PrivetRout>
             },
             {
                 path: '/MyProfile/myAdded',
                 element: <PrivetRout><Myadded /></PrivetRout>,
-                loader: () => fetch('http://localhost:5000/allcraft')
+                loader: () => fetch('https://historical-artifacts-tracher-server.vercel.app/allcraft')
             },
             {
                 path: '/MyProfile/myLiked',
                 element: <PrivetRout><MyLiked /></PrivetRout>,
-                loader: () => fetch('http://localhost:5000/liked')            },
+                loader: () => fetch('https://historical-artifacts-tracher-server.vercel.app/liked')
+            },
         ]
     },
 ])

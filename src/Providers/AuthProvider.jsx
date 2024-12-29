@@ -69,13 +69,13 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
-            console.log('state captured', currentUser?.email);
+            // console.log('state captured', currentUser?.email);
             setLoading(false)
 
             if (currentUser?.email) {
                 const user = { email: currentUser?.email };
 
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://historical-artifacts-tracher-server.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
                         // console.log('login token', res.data);
                         setLoading(false);
@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
 
             }
             else {
-                axios.post('hhttp://localhost:5000/logout', {}, {
+                axios.post('https://historical-artifacts-tracher-server.vercel.app/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {

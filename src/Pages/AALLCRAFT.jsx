@@ -24,7 +24,7 @@ const AALLCRAFT = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allcraft?Search=${Search}`)
+        fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft?Search=${Search}`)
             .then(res => res.json())
             .then(t => {
                 // console.log(t)

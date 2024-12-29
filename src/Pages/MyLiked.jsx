@@ -41,7 +41,7 @@ const MyLiked = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/liked/${id}`, {
+                    fetch(`https://historical-artifacts-tracher-server.vercel.app/liked/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

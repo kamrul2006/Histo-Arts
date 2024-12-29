@@ -46,7 +46,7 @@ const AddCraft = () => {
         // console.log(formData);
 
 
-        fetch('http://localhost:5000/allcraft', {
+        fetch('https://historical-artifacts-tracher-server.vercel.app/allcraft', {
             method: "POST",
             headers: {
                 'content-type': "application/json"

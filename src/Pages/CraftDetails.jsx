@@ -60,7 +60,7 @@ const dataDetails = () => {
         }
         else {
 
-            fetch('http://localhost:5000/liked', {
+            fetch('https://historical-artifacts-tracher-server.vercel.app/liked', {
                 method: "POST",
                 headers: {
                     'content-type': "application/json"
@@ -80,7 +80,8 @@ const dataDetails = () => {
                             timer: 1550
                         });
                     }
-                }).catch(ree => console.log(ree))
+                })
+                
         }
     };
 
@@ -100,7 +101,7 @@ const dataDetails = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/liked/${matchingIds.likeId}`, {
+                    fetch(`https://historical-artifacts-tracher-server.vercel.app/liked/${matchingIds.likeId}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

@@ -5,7 +5,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://historical-artifacts-tracher-server.vercel.app',
     withCredentials: true
 });
 

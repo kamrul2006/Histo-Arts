@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeaturedArtifacts = () => {
     const [crafts, setCraft] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/allcraft')
+        fetch('https://historical-artifacts-tracher-server.vercel.app/allcraft')
             .then(res => res.json())
             .then(data => setCraft(data))
     }, [])
@@ -17,14 +17,14 @@ const FeaturedArtifacts = () => {
         <div
             className='text-center bg-yellow-50  pb-5 md:pb-10'>
             <h1 className='text-2xl  md:text-4xl font-bold md:pt-10 pt-5'>
-                Some Of our most Recently Added Crafts
+                Some Of our most Liked Crafts
             </h1>
             <p className='md:pb-10 md:px-64 text-xs px-24 pt-4 pb-6 md:text-lg'>
                 Here are some of our most liked arts. to see all arts click on the view all Art button aor for details click on View Details .
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7 mx-5 md:mx-10">
-                {crafts.slice(Math.max(crafts.length - 6, 0)).map(Craft =>
+                {crafts.slice(0,6).map(Craft =>
                     <div key={Craft._id}>
                         <Slide>
                             <div className="card card-compact bg-base-100 w-96 shadow-xl">

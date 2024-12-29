@@ -39,7 +39,7 @@ const Myadded = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/allcraft/${id}`, {
+          fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${id}`, {
             method: 'DELETE'
           })
             .then(res => res.json())
@@ -63,7 +63,7 @@ const Myadded = () => {
   //-------------------------data for modal-------------------
   const [modal, setModal] = useState([])
   const ModalData = (id) => {
-    fetch(`http://localhost:5000/allcraft/${id}`)
+    fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${id}`)
       .then(res => res.json())
       .then(data => {
         // console.log(data)
@@ -110,7 +110,7 @@ const Myadded = () => {
     // console.log(formData)
 
     // ----------------sending data to server---------------
-    fetch(`http://localhost:5000/allcraft/${modal._id}`, {
+    fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${modal._id}`, {
       method: "PUT",
       headers: {
         'content-type': "application/json"

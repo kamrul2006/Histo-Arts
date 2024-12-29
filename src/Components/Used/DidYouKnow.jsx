@@ -116,7 +116,7 @@ const DidYouKnow = () => {
                         </button>
                     </Fade>
 
-                    <p className="text-right px-4 font-semibold text-lg italic opacity-20">  Displayed by <span className="font-serif text-xl">K-HistoArts</span></p>
+                    <p className="text-left px-4 font-semibold text-lg italic opacity-20">  Displayed by <span className="font-serif text-xl">K-HistoArts</span></p>
                 </div>
             </div>
 

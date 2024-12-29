@@ -6,6 +6,7 @@ const list = <>
     <li><NavLink to={'/'}>Home</NavLink> </li>
     <li><NavLink to={'/All-Crafts'}>All Artifacts</NavLink> </li>
     <li><NavLink to={'/Add-Craft'}>Add Artifacts</NavLink> </li>
+    <li><NavLink to={'/abutUs'}>About Us</NavLink> </li>
 </>
 
 const NavbarPart = () => {
