@@ -53,6 +53,7 @@ const Myadded = () => {
                   text: "Craft has been deleted.",
                   icon: "success"
                 });
+                revalidate()
               }
             });
         }

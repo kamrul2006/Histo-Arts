@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import BannerPart from "../Components/Used/BannerPart";
 import FeaturedArtifacts from "../Components/Used/FeaturedArtifacts";
+import DidYouKnow from "../Components/Used/DidYouKnow";
 
 const HomeLayOut = () => {
     useEffect(() => {
@@ -14,6 +15,7 @@ const HomeLayOut = () => {
 
             <FeaturedArtifacts />
 
+            <DidYouKnow />
         </div>
     );
 };

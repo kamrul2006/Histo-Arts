@@ -40,11 +40,11 @@ const AALLCRAFT = () => {
                 {/* ----------TITLE TEXT-------------- */}
                 <div
                     className='text-center bg-[#eeff9079]'>
-                    <h1 className='text-3xl md:text-6xl font-bold py-5'>
-                        All Historical ArtyCrafts
+                    <h1 className='text-2xl md:text-5xl font-bold py-5'>
+                        All Historical Artifacts
                     </h1>
 
-                    <h2 className="text-xl font-serif italic text-center my-3 font-semibold">Total Arts: {data.length}</h2>
+                    <h2 className="text-xl font-serif italic text-center my-1 font-semibold">Total Arts: {data.length}</h2>
 
                     <p className='md:pb-5 md:px-56 text-xs px-24 pb-6 md:text-lg'>
                         Here are all the arts. Chose click on the details button to see all details.

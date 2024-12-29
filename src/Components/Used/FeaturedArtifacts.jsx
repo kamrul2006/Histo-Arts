@@ -15,9 +15,9 @@ const FeaturedArtifacts = () => {
 
 
         <div
-            className='text-center bg-yellow-50 mb-10 md:mb-20 pb-5 md:pb-10'>
+            className='text-center bg-yellow-50  pb-5 md:pb-10'>
             <h1 className='text-2xl  md:text-4xl font-bold md:pt-10 pt-5'>
-                Some Of our most liked Crafts
+                Some Of our most Recently Added Crafts
             </h1>
             <p className='md:pb-10 md:px-64 text-xs px-24 pt-4 pb-6 md:text-lg'>
                 Here are some of our most liked arts. to see all arts click on the view all Art button aor for details click on View Details .
@@ -60,6 +60,8 @@ const FeaturedArtifacts = () => {
                         See All Artifacts.
                     </button>
                 </Link>
+
+                <p className="text-right px-4 font-semibold text-lg italic opacity-20">  Displayed by <span className="font-serif text-xl">K-HistoArts</span></p>
             </div>
         </div>
     );
