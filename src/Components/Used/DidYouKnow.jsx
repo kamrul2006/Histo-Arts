@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Fade, JackInTheBox, Zoom } from "react-awesome-reveal";
+import pic from '../../assets/les.png';
 
 const DidYouKnow = () => {
     const facts = [
@@ -71,9 +72,9 @@ const DidYouKnow = () => {
     const visibleFacts = showAll ? facts : facts.slice(0, 6);
 
     return (
-        <section className="bg-blue-50 py-10">
-            <div className=" py-5 md:py-10">
+        <section className="bg-blue-50 py-10 grid grid-cols-1 md:grid-cols-5 gap-3">
 
+            <div className=" py-5 md:py-10 col-span-5">
                 <Zoom duration={1600}>
                     <h2 className="md:text-4xl text-2xl font-serif font-bold text-center mb-2">Did You Know About this facts of our History ?
                     </h2>
@@ -84,41 +85,44 @@ const DidYouKnow = () => {
                         Here are some unknown fact about aor history. <br /> You will smile after knowing this facts. Click on the <span className={`text-purple-700 hover:underline`} onClick={() => setShowAll(!showAll)}>{showAll ? "Show Less Facts" : "Show All Facts"}</span> Button to read all the fun facts about our history,
                     </p>
                 </Fade>
-
-
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 mt-5">
+            <div className="col-span-4">
 
-                <JackInTheBox>
-                    {visibleFacts.map((item, index) => (
-                        <div
-                            key={index}
-                            className="flex items-start bg-yellow-100 p-4 rounded-lg shadow-md h-[120px]"
+                <div className="grid grid-cols-1 md:grid-cols-2  gap-3 px-5 mt-5">
+
+                    <JackInTheBox>
+                        {visibleFacts.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start bg-yellow-100 p-4 rounded-lg shadow-md h-[120px]"
+                            >
+                                <span className="text-4xl mr-4">{item.icon}</span>
+                                <p className="text-lg text-gray-700">{item.fact}</p>
+                            </div>
+                        ))}
+                    </JackInTheBox>
+                </div>
+
+
+                <div className="text-center mt-6 py-5 ">
+                    <Fade duration={1500}>
+                        <button
+                            className={`btn ${showAll ? "btn-info" : "btn-warning"} rounded-full text-xl shadow-md shadow-black`}
+                            onClick={() => setShowAll(!showAll)}
                         >
-                            <span className="text-4xl mr-4">{item.icon}</span>
-                            <p className="text-lg text-gray-700">{item.fact}</p>
-                        </div>
-                    ))}
-                </JackInTheBox>
+                            {showAll ? "Show Less Facts" : "Show All Facts"}
+                        </button>
+                    </Fade>
+
+                    <p className="text-right px-4 font-semibold text-lg italic opacity-20">  Displayed by <span className="font-serif text-xl">K-HistoArts</span></p>
+                </div>
             </div>
 
-
-            <div className="text-center mt-6 py-5 ">
-                <Fade duration={1500}>
-                    <button
-                        className={`btn ${showAll ? "btn-info" : "btn-warning"} rounded-full text-xl shadow-md shadow-black`}
-                        onClick={() => setShowAll(!showAll)}
-                    >
-                        {showAll ? "Show Less Facts" : "Show All Facts"}
-                    </button>
-                </Fade>
-
-                <p className="text-right px-4 font-semibold text-lg italic opacity-20">  Displayed by <span className="font-serif text-xl">K-HistoArts</span></p>
-            </div>
-
-           
+                 <div className="col-span-1 hidden md:flex items-center justify-center sticky top-8">
+                     <img src={pic} className="mx-auto sticky top-20"/>
+                 </div>
 
         </section>
     );
