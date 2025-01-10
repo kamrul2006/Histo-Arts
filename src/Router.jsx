@@ -13,6 +13,7 @@ import MyInfo from "./Pages/MyInfo";
 import AddCraft from "./Pages/AddCrafts";
 import CraftDetails from "./Pages/CraftDetails";
 import AboutUs from "./Components/Used/AboutUs";
+import ContactUs from "./Pages/ContactUs";
 
 
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
                 path: '/abutUs',
                 element: <AboutUs/>
             },
+            {
+                path: '/contactUs',
+                element: <ContactUs/>
+            }
         ]
     },
     {

@@ -35,7 +35,7 @@ const AALLCRAFT = () => {
 
 
     return (
-        <div>
+        <div className="bg-amber-50">
             <div>
                 {/* ----------TITLE TEXT-------------- */}
                 <div
@@ -73,7 +73,7 @@ const AALLCRAFT = () => {
                         {data.map(Craft =>
                             <div key={Craft._id}>
                                 <Slide>
-                                    <div className="card card-compact bg-amber-100 w-96 shadow-xl">
+                                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
                                         <figure>
                                             <img
                                                 src={Craft.artifactImage}
@@ -89,7 +89,8 @@ const AALLCRAFT = () => {
                                                 <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
 
                                                 <Link to={`/All-Crafts/details/${Craft._id}`}>
-                                                    <button className="btn btn-primary btn-sm btn-outline rounded-full">  View Details</button>
+                                                    <button className="btn btn-warning
+                                                     btn-sm btn-outline rounded-full">  View Details</button>
                                                 </Link>
                                             </div>
                                         </div>

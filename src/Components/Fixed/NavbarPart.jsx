@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const list = <>
-    <li><NavLink to={'/'}>Home</NavLink> </li>
-    <li><NavLink to={'/All-Crafts'}>All Artifacts</NavLink> </li>
-    <li><NavLink to={'/Add-Craft'}>Add Artifacts</NavLink> </li>
-    <li><NavLink to={'/abutUs'}>About Us</NavLink> </li>
+    <NavLink to={'/'}>Home</NavLink> 
+    <NavLink to={'/All-Crafts'}>All Artifacts</NavLink> 
+    <NavLink to={'/Add-Craft'}>Add Artifacts</NavLink> 
+    <NavLink to={'/abutUs'}>About Us</NavLink> 
+    <NavLink to={'/contactUs'}>Contact Us</NavLink>
 </>
 
 const NavbarPart = () => {
@@ -14,7 +15,7 @@ const NavbarPart = () => {
     // console.log(user?.photoURL)
 
     return (
-        <div className="px-5 md:px-20 bg-white/50 backdrop-blur sticky top-0 z-50 shadow">
+        <div className="px-5 md:px-20 bg-yellow-100 bg-opacity-50 backdrop-blur sticky top-0 z-50 shadow">
             <div className="navbar">
                 <div className="navbar-start">
                     {/* ----------------------------NAVBAr for large device started---------------------------- */}
@@ -45,13 +46,14 @@ const NavbarPart = () => {
 
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+                            className="dropdown-content flex flex-col gap-5 p-4 bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
                             {list}
                         </ul>
                     </div>
 
+
                     <div className=" hidden lg:flex ">
-                        <ul className="menu menu-horizontal px-1 space-x-4">
+                        <ul className="px-1 space-x-4">
                             {list}
                         </ul>
                     </div>

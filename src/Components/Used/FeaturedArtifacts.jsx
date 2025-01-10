@@ -43,7 +43,7 @@ const FeaturedArtifacts = () => {
                                         <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
 
                                         <Link to={`/All-Crafts/details/${Craft._id}`}>
-                                            <button className="btn btn-primary btn-sm btn-outline rounded-full">  View Details</button>
+                                            <button className="btn btn-warning btn-sm btn-outline rounded-full">  View Details</button>
                                         </Link>
                                     </div>
                                 </div>

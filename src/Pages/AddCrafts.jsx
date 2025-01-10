@@ -80,7 +80,7 @@ const AddCraft = () => {
                     {/* --title--- */}
                     <Zoom direction="left" delay={50}>
                         <h1
-                            className="text-center mb-5 text-blue-700 text-3xl md:text-5xl font-bold md:mt-10 ">
+                            className="text-center mb-5 text-yellow-500 text-3xl md:text-5xl font-bold md:mt-10 ">
                             Add a New Artifact.
                         </h1>
                     </Zoom>
@@ -249,7 +249,7 @@ const AddCraft = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                className="w-full text-black bg-amber-400 hover:text-white py-2 px-4 rounded-md shadow-sm hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             >
                                 Upload Artifact 
                             </button>
