@@ -4,11 +4,13 @@ import Footer from "../Components/Fixed/Footer";
 
 const RootLayOut = () => {
     return (
-        <div  className="md:max-w-7xl mx-auto border-x-2" >
-            
+        <div className="border-x-2" >
+
             <NavbarPart />
 
-            <Outlet />
+            <div className=" md:max-w-7xl mx-auto">
+                <Outlet />
+            </div>
 
             <Footer />
 

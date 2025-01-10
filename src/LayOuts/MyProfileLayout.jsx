@@ -9,10 +9,10 @@ const MyProfile = () => {
     const { UserSignOut } = useContext(AuthContext)
 
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="">
             <NavbarPart />
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-5 max-w-7xl mx-auto">
 
                 <div className="bg-gray-50 w-fit max-h-screen md:sticky top-10 md:col-span-1  md:pt-10">
 
