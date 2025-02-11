@@ -42,8 +42,8 @@ This is a web application which allow users to browse historical artifacts, view
 
 1. **Clone the repository**  
    ```sh
-   git clone https://github.com/your-repo/k-visa.git
-   cd k-visa
+   git clone '------repository link----'
+   cd '--project file---'
    ```
 
 2. **Install dependencies**  
