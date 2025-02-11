@@ -38,10 +38,11 @@ const FeaturedArtifacts = () => {
                                 <div className="card-body">
                                     <h2 className="card-title">{Craft.artifactName}</h2>
 
-                                    <p className="text-left h-[120px]"><b>Historical Context:</b> {Craft.historicalContext}</p>
+                                    <p className="text-left text-xs h-[80px] overflow-hidden"><b>Historical Context:</b> {Craft.historicalContext}</p>
 
                                     <div className="card-actions justify-between">
-                                        <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
+                                        <button className="text-yellow-500 font-bold
+                                        ">Total Like: {Craft.Like ? Craft.Like : 0}</button>
 
                                         <Link to={`/All-Crafts/details/${Craft._id}`}>
                                             <button className="btn btn-warning btn-sm btn-outline rounded-full">  View Details</button>

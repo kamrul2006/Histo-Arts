@@ -20,7 +20,7 @@ const NavbarPart = () => {
                 <div className="navbar-start">
                     {/* ----------------------------NAVBAr for large device started---------------------------- */}
 
-                    <div className="mr-6 flex items-center">
+                    <div className="mr-6  md:hidden flex items-center">
 
                         {/* ---------------------menu for mobile device-------------- */}
                         <div className="dropdown">
@@ -35,12 +35,6 @@ const NavbarPart = () => {
                             </ul>
                         </div>
 
-
-                        <div className=" hidden lg:flex ">
-                            <ul className="px-1 space-x-4">
-                                {list}
-                            </ul>
-                        </div>
                     </div>
 
 
@@ -57,8 +51,13 @@ const NavbarPart = () => {
                         </Link>
                     </div>
 
+                </div>
 
 
+                <div className=" hidden lg:flex navbar-center">
+                    <ul className="px-1 space-x-4">
+                        {list}
+                    </ul>
                 </div>
 
 

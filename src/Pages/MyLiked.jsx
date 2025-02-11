@@ -62,7 +62,7 @@ const MyLiked = () => {
 
 
     return (
-        <div className="border">
+        <div className="border min-h-screen">
             <div className="text-center text-2xl py-5 bg-amber-200">
                 My liked artifacts
             </div>

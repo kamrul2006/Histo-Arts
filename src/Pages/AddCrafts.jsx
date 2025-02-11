@@ -76,7 +76,7 @@ const AddCraft = () => {
 
             <div className="border m-5 md:m-10 rounded-md shadow-lg">
                 {/* ----------------header------------- */}
-                <div className="bg-gray-300 py-3 px-2 md:px-10">
+                <div className="bg-yellow-100 py-3 px-2 md:px-10">
                     {/* --title--- */}
                     <Zoom direction="left" delay={50}>
                         <h1
@@ -91,7 +91,7 @@ const AddCraft = () => {
                 </div>
 
 
-                <div className="mx-5 md:mx-20 px-3 md:px-10 my-4 md:my-10 py-2 md:py-5 bg-base-200 rounded-md">
+                <div className="mx-5 md:mx-20 px-3 md:px-10 my-4 md:my-10 py-2 md:py-5 bg-yellow-50 rounded-md">
 
                     <h1 className="text-center text-2xl font-bold my-5 ">Add All The Artifact Information</h1>
 
