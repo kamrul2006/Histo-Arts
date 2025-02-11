@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
-const list = <>
+const list = < >
     <NavLink to={'/'}>Home</NavLink>
     <NavLink to={'/All-Crafts'}>All Artifacts</NavLink>
     <NavLink to={'/Add-Craft'}>Add Artifacts</NavLink>
@@ -55,7 +55,7 @@ const NavbarPart = () => {
 
 
                 <div className=" hidden lg:flex navbar-center">
-                    <ul className="px-1 space-x-4">
+                    <ul className="px-1 space-x-4 font-semibold">
                         {list}
                     </ul>
                 </div>

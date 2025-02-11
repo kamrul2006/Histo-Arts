@@ -18,7 +18,7 @@ const Footer = () => {
                                 <Link className="hover:underline hover:text-blue-500" to={'/Add-Craft'}> <p>Add Artifacts</p></Link>
                             </div>
 
-                            <div className="flex items-center gap-5 text-xl md:text-3xl mt-7">
+                            <div className="flex items-center justify-center md:justify-start gap-5 text-xl md:text-3xl mt-7">
                                 <a className="hover:text-blue-500" href="https://www.facebook.com/">
                                     <FaFacebook />
                                 </a>
