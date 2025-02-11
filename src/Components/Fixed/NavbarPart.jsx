@@ -61,6 +61,7 @@ const NavbarPart = () => {
                 </div>
 
 
+
                 <div className="navbar-end">
                     <div>
                         {user ?
