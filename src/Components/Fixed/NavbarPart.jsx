@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const list = <>
-    <NavLink to={'/'}>Home</NavLink> 
-    <NavLink to={'/All-Crafts'}>All Artifacts</NavLink> 
-    <NavLink to={'/Add-Craft'}>Add Artifacts</NavLink> 
-    <NavLink to={'/abutUs'}>About Us</NavLink> 
+    <NavLink to={'/'}>Home</NavLink>
+    <NavLink to={'/All-Crafts'}>All Artifacts</NavLink>
+    <NavLink to={'/Add-Craft'}>Add Artifacts</NavLink>
+    <NavLink to={'/abutUs'}>About Us</NavLink>
     <NavLink to={'/contactUs'}>Contact Us</NavLink>
 </>
 
@@ -20,13 +20,38 @@ const NavbarPart = () => {
                 <div className="navbar-start">
                     {/* ----------------------------NAVBAr for large device started---------------------------- */}
 
+                    <div className="mr-6 flex items-center">
+
+                        {/* ---------------------menu for mobile device-------------- */}
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-sm btn-circle lg:hidden">
+                                <img src="https://img.icons8.com/external-others-inmotus-design/67/external-Menu-round-icons-others-inmotus-design-2.png" alt="..." className="w-7 h-7" />
+                            </div>
+
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content flex flex-col gap-5  bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
+                                {list}
+                            </ul>
+                        </div>
+
+
+                        <div className=" hidden lg:flex ">
+                            <ul className="px-1 space-x-4">
+                                {list}
+                            </ul>
+                        </div>
+                    </div>
+
+
+
                     {/* ---name and logo----- */}
                     <div className="flex items-center gap-3">
                         <img src="https://img.icons8.com/pieces/64/palace.png" alt="🏰" className="w-7 md:w-11" />
 
                         <Link to={'/'}>
                             <button
-                                className="text-lg md:text-3xl font-bold font-serif hover:text-yellow-500">
+                                className=" md:text-3xl font-bold font-serif hover:text-yellow-500">
                                 K-HistoArts
                             </button>
                         </Link>
@@ -34,29 +59,6 @@ const NavbarPart = () => {
 
 
 
-                </div>
-
-                <div className="navbar-center">
-
-                    {/* ---------------------menu for mobile device-------------- */}
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-sm btn-circle lg:hidden">
-                            <img src="https://img.icons8.com/external-others-inmotus-design/67/external-Menu-round-icons-others-inmotus-design-2.png" alt="..." className="w-7 h-7" />
-                        </div>
-
-                        <ul
-                            tabIndex={0}
-                            className="dropdown-content flex flex-col gap-5 p-4 bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
-                            {list}
-                        </ul>
-                    </div>
-
-
-                    <div className=" hidden lg:flex ">
-                        <ul className="px-1 space-x-4">
-                            {list}
-                        </ul>
-                    </div>
                 </div>
 
 
@@ -68,9 +70,9 @@ const NavbarPart = () => {
                                     {user.photoURL && <img src={`${user.photoURL}`} className="w-full h-full object-cover border-2 border-yellow-400 rounded-full" />}
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                    <li>
-                                        <p className=" text-black font-semibold">{user && user.displayName}</p>
-                                    </li>
+
+                                    <p className=" text-black font-semibold hover:bg-white m-2">{user && user.displayName}</p>
+
 
                                     <Link to={'/MyProfile'}>  <button className="my-1 btn btn-xs text-xs  btn-success btn-outline w-full">My Profile </button></Link>
 
