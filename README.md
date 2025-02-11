@@ -132,14 +132,9 @@ This project is licensed under the **MIT License**.
 
 ---
 
-✨ **Enjoy Building with K-VISA!** 🚀
+✨ **Enjoy Building with K-HistoArts!** 🚀
+
 ```
-
----
-
-This README provides a **clear structure**, includes **important details**, and follows best practices for open-source projects. Let me know if you need any changes! 🚀
-
-
 # Thank You💕
 
 - ✉ Contact: kamrulislamapurba@gmail.com
