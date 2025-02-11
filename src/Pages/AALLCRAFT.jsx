@@ -83,7 +83,7 @@ const AALLCRAFT = () => {
                                         <div className="card-body">
                                             <h2 className="card-title font-serif font-semibold">{Craft.artifactName}</h2>
 
-                                            <p className="text-left h-[100px]  text-xs"><b>Historical Context:</b> {Craft.historicalContext}</p>
+                                            <p className="text-left h-[68px]  overflow-hidden text-xs"><b>Historical Context:</b> {Craft.historicalContext}</p>
 
                                             <div className="card-actions justify-between">
                                                 <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>

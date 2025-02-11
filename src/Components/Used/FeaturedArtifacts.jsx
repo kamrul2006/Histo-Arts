@@ -24,7 +24,7 @@ const FeaturedArtifacts = () => {
             </p>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mx-5 md:mx-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mx-16 md:mx-10">
                 {crafts.slice(0,8).map(Craft =>
                     <div key={Craft._id}>
                         <Slide>
