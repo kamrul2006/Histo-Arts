@@ -23,6 +23,7 @@ const FeaturedArtifacts = () => {
                 Here are some of our most liked arts. to see all arts click on the view all Art button aor for details click on View Details .
             </p>
 
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mx-5 md:mx-10">
                 {crafts.slice(0,8).map(Craft =>
                     <div key={Craft._id}>
@@ -56,7 +57,7 @@ const FeaturedArtifacts = () => {
 
             <div className="mx-auto my-5 md:mt-14">
                 <Link to={"/All-Crafts"}>
-                    <button className='btn btn-outline btn-sm md:btn-md rounded-full shadow-lg shadow-black'>
+                    <button className='btn  btn-sm btn-warning md:btn-md rounded-full shadow-lg shadow-black'>
                         See All Artifacts.
                     </button>
                 </Link>

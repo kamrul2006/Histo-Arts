@@ -69,11 +69,11 @@ const AALLCRAFT = () => {
                         <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>No Artifacts Available</h1>
                         <img src={nodata} className='mx-auto w-1/2' />
                     </div> :
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-10 md:mx-10 my-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-10 md:mx-10 my-10">
                         {data.map(Craft =>
                             <div key={Craft._id}>
                                 <Slide>
-                                    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+                                    <div className="card card-compact bg-base-100  shadow-xl">
                                         <figure>
                                             <img
                                                 src={Craft.artifactImage}
@@ -83,7 +83,7 @@ const AALLCRAFT = () => {
                                         <div className="card-body">
                                             <h2 className="card-title font-serif font-semibold">{Craft.artifactName}</h2>
 
-                                            <p className="text-left h-[120px]"><b>Historical Context:</b> {Craft.historicalContext}</p>
+                                            <p className="text-left h-[100px]  text-xs"><b>Historical Context:</b> {Craft.historicalContext}</p>
 
                                             <div className="card-actions justify-between">
                                                 <button>Total Like ({Craft.Like ? Craft.Like : 0})</button>
