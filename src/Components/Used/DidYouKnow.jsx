@@ -72,7 +72,7 @@ const DidYouKnow = () => {
     const visibleFacts = showAll ? facts : facts.slice(0, 6);
 
     return (
-        <section className="bg-blue-50 py-10 grid grid-cols-1 md:grid-cols-5 gap-3">
+        <section className="bg-base-100 py-10 grid grid-cols-1 md:grid-cols-5 gap-3">
 
             <div className=" py-5 md:py-10 col-span-5">
                 <Zoom duration={1600}>

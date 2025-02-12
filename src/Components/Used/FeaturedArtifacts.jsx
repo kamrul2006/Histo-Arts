@@ -15,7 +15,7 @@ const FeaturedArtifacts = () => {
 
 
         <div
-            className='text-center bg-yellow-50  pb-5 md:pb-10'>
+            className='text-center bg-base-200  pb-5 md:pb-10'>
             <h1 className='text-2xl  md:text-4xl font-bold md:pt-10 pt-5'>
                 Some Of our most Liked Crafts
             </h1>

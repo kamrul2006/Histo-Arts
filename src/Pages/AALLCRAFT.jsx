@@ -35,7 +35,7 @@ const AALLCRAFT = () => {
 
 
     return (
-        <div className="bg-amber-50">
+        <div className="bg-base-300 pb-5 md:pb-10">
             <div>
                 {/* ----------TITLE TEXT-------------- */}
                 <div

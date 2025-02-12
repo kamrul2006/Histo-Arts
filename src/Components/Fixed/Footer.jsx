@@ -6,19 +6,19 @@ const Footer = () => {
     // const { user, } = useContext(AuthContext)
     return (
         <div className="mt-5 md:mt-10">
-            <footer className="  bg-[#ffffe4] text-black rounded px-5 md:px-0">
+            <footer className="  bg-base-100 rounded px-5 md:px-0">
                 <div className="md:grid grid-cols-1 md:grid-cols-3  gap-10">
 
                     <div className="w-full  md:bg-amber-400 flex items-center justify-center flex-col md:rounded-e-full md:shadow-lg my-10 md:my-0">
 
                         <div className="">
-                            <div className="flex md:hidden gap-4 items-center justify-center text-center font-semibold font-sans text-lg  pt-5 md:pt-0 bg-[#ffffe4]">
+                            <div className="flex md:hidden gap-4 items-center justify-center text-center font-semibold font-sans text-lg  pt-5 md:pt-0 md:text-black">
                                 <Link className="hover:underline hover:text-blue-500" to={'/'}><p>Home</p></Link>
                                 <Link className="hover:underline hover:text-blue-500" to={'/All-Crafts'}><p>All Artifacts</p></Link>
                                 <Link className="hover:underline hover:text-blue-500" to={'/Add-Craft'}> <p>Add Artifacts</p></Link>
                             </div>
 
-                            <div className="flex items-center justify-center md:justify-start gap-5 text-xl md:text-3xl mt-7">
+                            <div className="flex items-center justify-center md:justify-start gap-5 text-xl md:text-3xl mt-7 md:text-black">
                                 <a className="hover:text-blue-500" href="https://www.facebook.com/">
                                     <FaFacebook />
                                 </a>
@@ -34,7 +34,7 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div className="mt-8 space-y-2 text-black md:pb-16 ">
+                        <div className="mt-8 space-y-2  md:pb-16 md:text-black">
                             <h3 className="text-2xl font-semibold mt-2">Get in touch:</h3>
                             <p className="flex items-center space-x-2">
                                 <FiPhone />
@@ -53,7 +53,7 @@ const Footer = () => {
 
                     <div className=" hidden md:flex flex-col items-center justify-center gap-6" >
 
-                        <div className="flex gap-6 items-center justify-center text-center font-semibold font-sans text-lg  pt-5 md:pt-0 bg-[#ffffe4]">
+                        <div className="flex gap-6 items-center justify-center text-center font-semibold font-sans text-lg  pt-5 md:pt-0 ">
                             <Link className="hover:underline hover:text-blue-500" to={'/'}><p>Home</p></Link>
                             <Link className="hover:underline hover:text-blue-500" to={'/All-Crafts'}><p>All Artifacts</p></Link>
                             <Link className="hover:underline hover:text-blue-500" to={'/Add-Craft'}> <p>Add Artifacts</p></Link>
@@ -69,8 +69,8 @@ const Footer = () => {
                         </Link>
                     </div>
 
-                    <div className='w-full  md:pl-28 md:pr-5 md:py-16 md:bg-amber-400 md:rounded-s-full md:shadow-lg'>
-                        <h3 className="text-2xl font-bold text-black">Connect with Us</h3>
+                    <div className='w-full  md:pl-28 md:pr-5 md:py-16 md:bg-amber-400 md:rounded-s-full md:shadow-lg md:text-black'>
+                        <h3 className="text-2xl font-bold ">Connect with Us</h3>
                         <form className="mt-6 space-y-4">
                             <div>
                                 <input
@@ -98,7 +98,7 @@ const Footer = () => {
                         </form>
                         <button
                             // type="submit"
-                            className="btn btn-sm md:btn-md btn-outline hover:font-semibold rounded-full my-2"
+                            className="btn btn-sm md:btn-md  hover:font-semibold rounded-full my-2 px-6"
                         >
                             Send Message
                         </button>
