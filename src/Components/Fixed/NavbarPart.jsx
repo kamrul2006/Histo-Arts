@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
+
 const list = < >
     <NavLink className="hover:text-gray-500" to={'/'}>Home</NavLink>
     <NavLink className="hover:text-gray-500" to={'/All-Crafts'}>All Artifacts</NavLink>
