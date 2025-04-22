@@ -10,7 +10,7 @@ const HomeLayOut = () => {
     }, [])
 
     return (
-        <div>
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-100">
 
             <BannerPart />
 
@@ -18,7 +18,7 @@ const HomeLayOut = () => {
 
             <DidYouKnow />
 
-            <AboutUs/>
+            <AboutUs />
         </div>
     );
 };

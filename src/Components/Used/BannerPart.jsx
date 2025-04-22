@@ -37,7 +37,7 @@ const slides = [
 
 const BannerPart = () => {
     return (
-        <div className="h-56 md:h-[550px] lg:mt-10 mt-0">
+        <div className="h-56 md:h-[550px] lg:mt-5 mt-0">
             <Carousel slideInterval={5000} indicators={true}>
                 {slides.map((slide, index) => (
                     <div

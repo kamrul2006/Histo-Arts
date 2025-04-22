@@ -58,7 +58,7 @@ const FeaturedArtifacts = () => {
 
             <div className="text-center mt-10">
                 <Link to={"/All-Crafts"}>
-                    <button className='btn btn-warning text-white py-2 px-6 rounded-full shadow-lg hover:bg-yellow-600 transition-colors'>
+                    <button className='btn btn-warning text-gray-600 hover:text-black py-2 px-6 rounded-full shadow-lg hover:px-8 transition-colors'>
                         See All Artifacts
                     </button>
                 </Link>

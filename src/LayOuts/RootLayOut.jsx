@@ -4,7 +4,7 @@ import Footer from "../Components/Fixed/Footer";
 
 const RootLayOut = () => {
     return (
-        <div className="border-x-2" >
+        <div className="border-x-2 bg-gradient-to-r from-amber-50 to-yellow-100" >
 
             <NavbarPart />
 
