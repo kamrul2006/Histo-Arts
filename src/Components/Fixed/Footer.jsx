@@ -64,7 +64,7 @@ const Footer = () => {
                         <Link to={'/'}>
                             <button
                                 className="text-2xl md:text-4xl font-bold font-serif hover:text-yellow-500 w-fit">
-                            K-HistoArts
+                                K-HistoArts
                             </button>
                         </Link>
                     </div>
