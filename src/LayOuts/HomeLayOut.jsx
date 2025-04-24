@@ -3,6 +3,7 @@ import BannerPart from "../Components/Used/BannerPart";
 import FeaturedArtifacts from "../Components/Used/FeaturedArtifacts";
 import DidYouKnow from "../Components/Used/DidYouKnow";
 import AboutUs from "../Components/Used/AboutUs";
+import HistoryQuizGame from "../Components/Used/HistoryGames";
 
 const HomeLayOut = () => {
     useEffect(() => {
@@ -17,6 +18,8 @@ const HomeLayOut = () => {
             <FeaturedArtifacts />
 
             <DidYouKnow />
+
+            <HistoryQuizGame />
 
             <AboutUs />
         </div>
