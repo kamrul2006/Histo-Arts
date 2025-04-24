@@ -81,7 +81,7 @@ const dataDetails = () => {
                         });
                     }
                 })
-                
+
         }
     };
 
@@ -135,7 +135,7 @@ const dataDetails = () => {
             <div>
                 {/* ----------TITLE TEXT-------------- */}
                 <div
-                    className='text-center bg-[#fdff7e6c] pb-5'>
+                    className='text-center  pb-5'>
                     <h1 className='text-3xl md:text-5xl font-bold py-5'>
                         Details About {data.artifactName}
                     </h1>
@@ -191,7 +191,7 @@ const dataDetails = () => {
                                     <div className="flex items-center justify-center flex-col">
                                         {liked && <button onClick={HandleLike} className={`btn text-xl btn-circle btn-primary `}><BiSolidLike /></button>}
 
-                                        {!liked && <button onClick={HandleLike} className={`btn text-xl btn-circle btn-neutral `}><BiSolidDislike /></button>}
+                                        {!liked && <button onClick={HandleLike} className={`btn text-xl btn-circle btn-neutral `}><BiSolidLike /></button>}
 
 
                                         {/* <button onClick={HandleLike} className={`btn text-xl btn-circle ${liked ? "btn-primary" : "btn-neutral"}`}>{liked ? <BiSolidLike /> : }</button> */}

@@ -32,7 +32,7 @@ const AALLCRAFT = () => {
     }, [search, sortAZ]);
 
     return (
-        <div className="bg-gradient-to-br from-gray-100 to-blue-50 min-h-screen pb-10">
+        <div className=" min-h-screen pb-10">
             <div className="text-center py-10">
                 <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 tracking-wide mb-3">All Historical Artifacts</h1>
                 <h2 className="text-xl italic font-medium text-gray-700">Total Arts: {data.length}</h2>
