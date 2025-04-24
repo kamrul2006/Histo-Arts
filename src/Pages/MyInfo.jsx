@@ -1,50 +1,59 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
-
 const MyInfo = () => {
 
     useEffect(() => {
         document.title = "K-HistoArts || My Profile"
     }, [])
 
-
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
     return (
-        <div>
-            <div className="mx-auto flex flex-col justify-center items-center md:mx-20 my-10">
-                {user && <div>
-                    <div>
-                        <p className=" md:text-2xl font-serif text-yellow-500 text-center ">
-                            Hello <span className="text-black md:text-3xl">{user.displayName}</span> <br />
+        <div className=" min-h-screen flex justify-center items-center">
+            <div className="bg-gradient-to-r from-indigo-800 to-pink-800 max-w-3xl w-full p-8 rounded-3xl shadow-2xl bg-opacity-90 backdrop-blur-md text-white">
+                {user && (
+                    <div className="space-y-6 ">
+                        <div className="text-center">
+                            <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-500">
+                                Hello, <span className="text-white">{user.displayName}</span>!
+                            </h1>
+                            <p className="mt-2 text-lg font-medium text-gray-300">
+                                Welcome to <span className="text-yellow-400">K-HistoArts</span>
+                            </p>
+                        </div>
 
-                            Welcome
-
-                            To <span className="text-blue-500">K-HistoArts</span></p>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-5 ">
-                        <div className="mx-auto">
-
-                            <div className="mx-auto my-4">
-
-                                <div className=" my-1 p-4 bg-yellow-50 rounded-2xl shadow-lg mx-auto md:px-20 w-fit">
-                                    <h2 className="text-center text-xl bg-white py-1 rounded-xl">My Profile:</h2>
-                                    <div className="md:w-36 mx-auto w-14 h-14 md:h-36 my-4">
-                                        <img src={user.photoURL} className="w-full h-full object-cover mx-auto border-2 border-yellow-400 rounded-full" />
-                                    </div>
-                                    <div className=" flex flex-col items-center justify-center items-left gap-3">
-                                        <p className=" text-lg md:text-3xl  font-serif">Name : <span className="font-sans font-bold">  {user.displayName}</span></p>
-                                        <p className=" text-lg md:text-2xl font-serif">Email : <span className="font-sans font-bold">  {user.email ? user.email : "Not Added"}</span></p>
-                                        <p className=" text-lg md:text-2xl font-serif">
-                                            <span className="mx-5"> Verified : <span className="font-sans">  {user.emailVerified ? '✅' : "Not Verified."}</span></span></p>
-                                    </div>
-                                </div>
+                        <div className="flex justify-center">
+                            <div className="w-28 h-28 rounded-full overflow-hidden shadow-xl border-4 border-gradient-to-r from-yellow-400 via-pink-500 to-blue-500 transform transition-all hover:scale-110">
+                                <img src={user.photoURL} className="w-full h-full object-cover" />
                             </div>
                         </div>
+
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-center">
+                                <p className="text-lg text-gray-200">Name:</p>
+                                <p className="text-xl font-semibold text-yellow-300">{user.displayName}</p>
+                            </div>
+
+                            <div className="flex justify-between items-center">
+                                <p className="text-lg text-gray-200">Email:</p>
+                                <p className="text-xl font-semibold text-yellow-300">{user.email ? user.email : "Not Added"}</p>
+                            </div>
+
+                            <div className="flex justify-between items-center">
+                                <p className="text-lg text-gray-200">Verified:</p>
+                                <p className="text-xl font-semibold text-green-400">
+                                    {user.emailVerified ? '✅ Verified' : '❌ Not Verified'}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="text-center mt-6">
+                            <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full text-white font-semibold shadow-lg transform transition-all hover:scale-105">
+                                Edit Profile
+                            </button>
+                        </div>
                     </div>
-                </div>
-                }
+                )}
             </div>
         </div>
     );
