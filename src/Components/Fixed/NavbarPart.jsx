@@ -37,7 +37,7 @@ const NavbarPart = () => {
         ));
 
     return (
-        <div className="sticky top-0 z-50 backdrop-blur-md bg-white/40 shadow-md border-b border-yellow-300">
+        <div className="sticky top-0 z-50 backdrop-blur-md bg-white/50 shadow-md border-b border-yellow-300">
 
             <div className=" mx-auto px-5 md:px-10">
                 <div className="flex justify-between items-center py-4">
@@ -59,13 +59,13 @@ const NavbarPart = () => {
                         {/* Profile/Login */}
                         {user ? (
                             <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="button" className="w-10 h-10 rounded-full border border-yellow-400 overflow-hidden">
+                                <div tabIndex={0} role="button" className="w-12 hover:w-14  h-12 rounded-full border hover:border-4 border-yellow-400 overflow-hidden">
                                     <img src={user.photoURL} className="object-cover w-full h-full" />
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content z-[999] bg-white shadow-xl rounded-lg w-48 p-4 space-y-2">
                                     <p className="text-sm font-bold text-gray-700">{user.displayName}</p>
                                     <Link to="/MyProfile">
-                                        <button className="btn btn-xs btn-outline btn-info w-full">My Profile</button>
+                                        <button className="btn btn-xs btn-outline btn-info w-full">Dashboard</button>
                                     </Link>
                                     <button className="btn btn-xs btn-warning w-full" onClick={UserSignOut}>
                                         Sign Out
