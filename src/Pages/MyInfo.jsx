@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyInfo = () => {
 
@@ -48,9 +49,9 @@ const MyInfo = () => {
                         </div>
 
                         <div className="text-center mt-6">
-                            <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full text-white font-semibold shadow-lg transform transition-all hover:scale-105">
+                            <Link to={"/edidprofile"} className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full text-white font-semibold shadow-lg transform transition-all hover:scale-105">
                                 Edit Profile
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 )}

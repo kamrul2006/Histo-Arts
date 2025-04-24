@@ -1,4 +1,7 @@
-# K-HistoCraft 🏰
+
+# 🏰 K-HistoCraft
+
+A modern, user-friendly web application for exploring and contributing historical artifacts.
 
 ---------------------
 **Project Overview and  Purpose :**
@@ -7,63 +10,95 @@ This is a web application which allow users to browse historical artifacts, view
 
 --------------
 
-# Live link: https://k-histocraft.web.app
 
---------------
+## 🌐 Live Demo
 
-**Some Key Features :**
-- User friendly interface,
-- The website is fully responsive on mobile, tablet, and desktop,
-- Users can browse historical artifacts,
-- User can view details, 
-- User can add their own entries,
-- Users can like artifacts ,
-- Keep track of their own contributions,
-- User can see their liked items and can remove it, etc.  ***And Many more......***
+[https://k-histocraft.web.app](https://k-histocraft.web.app)
 
--------------------------
+---
 
-**Packages that used :**
-- SweetAlert2.
-- Firebase Authentication and hosting,
-- react awesome revile,
-- react rough,
-- axios,
-- JWT,
-- TailwindCSS,
-- DaisyUI,
-- Flowbite etc.
---------------
+## 📖 Project Overview
 
--------------------------------
+K-HistoCraft is a web platform designed to let users:
 
+- Browse and search for historical artifacts  
+- View detailed information about each item  
+- Contribute their own artifact entries  
+- Like and manage favorite artifacts  
+- Track their contributions via a user dashboard  
 
-## 🛠 Installation  
+Built with a clean, responsive interface, the app leverages powerful frontend technologies and Firebase for authentication and hosting.
+
+---
+
+## ✨ Features
+
+- 🖼 Browse historical artifacts by category  
+- 📄 View detailed artifact pages  
+- ➕ Add new artifact entries  
+- ❤️ Like and manage favorite items  
+- 🧑‍💼 Personalized user dashboard  
+- 📱 Fully responsive on mobile, tablet, and desktop  
+- 🔐 Firebase authentication & secure routing  
+- 🎉 Interactive UI with smooth animations  
+
+---
+
+## 📦 Tech Stack
+
+### Frontend
+
+- **React** ^18.3.1  
+- **React Router DOM** ^7.1.1  
+- **Axios** ^1.7.9  
+- **Framer Motion** ^12.8.0  
+- **SweetAlert2** ^11.15.3  
+- **Flowbite React** ^0.10.2  
+- **Lucide React**, **React Icons**, **Emotion**, and more
+
+### Styling
+
+- **Tailwind CSS** ^3.4.17  
+- **DaisyUI** ^4.12.22  
+- **PostCSS**, **Autoprefixer**
+
+### Development Tools
+
+- **Vite** ^6.0.5  
+- **ESLint** ^9.17.0  
+- **React Refresh**, **React Hooks Plugin**  
+- **TypeScript Types** support for React
+
+---
+
+## 🛠 Installation
 
 1. **Clone the repository**  
-   ```sh
-   git clone '------repository link----'
-   cd '--project file---'
+   ```bash
+   git clone https://github.com/kamrul2006/Histo-Arts.git
+   cd Histo-Arts
    ```
 
 2. **Install dependencies**  
-   ```sh
+   ```bash
    npm install
    ```
 
-3. **Set up the environment variables**  
-   Create a `.env` file in the root directory (see the next section for required variables).
+3. **Set up environment variables**  
+   Create a `.env` file in the root directory (see below).
 
-4. **Start the development server**  
-   ```sh
+4. **Run the development server**  
+   ```bash
    npm run dev
    ```
 
-## 🔧 Environment Variables  
+---
 
-Create a `.env` file in the root directory with the following variables (replace with actual values):  
+## 🔧 Environment Variables
 
-```plaintext
+Create a `.env` file in your project root and add the following:
+
+```env
 FIREBASE_API_KEY=your_firebase_api_key
 FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
 FIREBASE_PROJECT_ID=your_firebase_project_id
@@ -72,71 +107,60 @@ FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 FIREBASE_APP_ID=your_firebase_app_id
 ```
 
-⚠ **Note:** Never expose API keys or sensitive credentials in public repositories. Use `.gitignore` to exclude the `.env` file.
-
-## 📦 Dependencies  
-
-This project uses the following libraries and frameworks:
-
-### Frontend  
-
-- **React** (^18.3.1)  
-- **React Router DOM** (^7.0.2)  
-- **Lottie React** (^2.4.0)  
-- **React Icons** (^5.4.0)  
-- **React Toastify** (^10.0.6)  
-- **SweetAlert2** (^11.14.5)  
-
-### Development Tools  
-
-- **Vite** (^6.0.1)  
-- **TailwindCSS** (^3.4.15)  
-- **DaisyUI** (^4.12.14)  
-- **ESLint** (^9.15.0)  
-
-## ▶ Usage  
-
-- **Start Development Server**  
-  ```sh
-  npm run dev
-  ```
-
-- **Build for Production**  
-  ```sh
-  npm run build
-  ```
-
-- **Lint the Code**  
-  ```sh
-  npm run lint
-  ```
-
-- **Preview the Production Build**  
-  ```sh
-  npm run preview
-  ```
-
-## 🛠 Development  
-
-To contribute to this project:
-
-1. **Fork the repository**  
-2. **Create a new branch** (`git checkout -b feature-branch`)  
-3. **Make changes and commit** (`git commit -m "Added new feature"`)  
-4. **Push to the branch** (`git push origin feature-branch`)  
-5. **Open a Pull Request**  
-
-## 📜 License  
-
-This project is licensed under the **MIT License**.  
+> ⚠️ Do **not** commit `.env` files to public repositories. Add it to your `.gitignore`.
 
 ---
 
-✨ **Enjoy Building with K-HistoArts!** 🚀
+## 🚀 Usage
 
+### Development
+
+```bash
+npm run dev
 ```
-# Thank You💕
 
-- ✉ Contact: kamrulislamapurba@gmail.com
+### Build for Production
 
+```bash
+npm run build
+```
 
+### Lint Code
+
+```bash
+npm run lint
+```
+
+### Preview Build
+
+```bash
+npm run preview
+```
+
+---
+
+## 🧩 Contributing
+
+1. Fork the repository  
+2. Create your feature branch: `git checkout -b feature/my-feature`  
+3. Commit your changes: `git commit -m "Add my feature"`  
+4. Push to the branch: `git push origin feature/my-feature`  
+5. Open a pull request  
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Acknowledgements
+
+Thanks to all open-source contributors and UI component libraries that power K-HistoCraft.
+
+---
+
+## 💌 Contact
+
+- ✉ Email: [kamrulislamapurba@gmail.com](mailto:kamrulislamapurba@gmail.com)

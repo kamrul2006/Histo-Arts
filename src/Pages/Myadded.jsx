@@ -4,30 +4,21 @@ import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import nodata from "../assets/nodata.jpg"
 import { Fade } from 'react-awesome-reveal';
-
-
+import { ArrowUp } from 'lucide-react';
 
 const Myadded = () => {
   useEffect(() => {
     document.title = "K-HistoArts || My Added"
   }, [])
 
-
-
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const { revalidate } = useRevalidator();
-  const data = useLoaderData()
+  const data = useLoaderData();
 
-  const myCraft = data.filter(data => data.adderInfo.email == user.email);
-  // console.log(myCraft)
+  const myCraft = data.filter(item => item.adderInfo.email === user.email);
+  const [AllCraft, setAllCraft] = useState(myCraft);
 
-  const [AllCraft, setAllCraft] = useState(myCraft)
-
-
-  // // -----------------------removing data---------------------
   const handleRemove = (id) => {
-    // console.log(id)
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to Delete this!",
@@ -36,81 +27,60 @@ const Myadded = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${id}`, {
-            method: 'DELETE'
-          })
-            .then(res => res.json())
-            .then(data => {
-              // console.log(data);
-              if (data.deletedCount > 0) {
-                const remaining = myCraft.filter(cr => cr._id !== id)
-                setAllCraft(remaining)
-                Swal.fire({
-                  title: "Deleted!",
-                  text: "Craft has been deleted.",
-                  icon: "success"
-                });
-                revalidate()
-              }
-            });
-        }
-      })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              const remaining = myCraft.filter(cr => cr._id !== id);
+              setAllCraft(remaining);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Craft has been deleted.",
+                icon: "success"
+              });
+              revalidate();
+            }
+          });
+      }
+    });
   }
 
-  //-------------------------data for modal-------------------
-  const [modal, setModal] = useState([])
+  const [modalData, setModalData] = useState(null);
+
   const ModalData = (id) => {
     fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${id}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
-        setModal(data)
-      })
+        setModalData(data);
+      });
   }
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleButtonClick = () => {
-    setModalOpen(false);
-  };
+  const handleCloseModal = () => setModalData(null);
 
-  // //--------------------------handle update -----------------
   const HandleUpdateArt = async (e) => {
     e.preventDefault();
-    const E = e.target
-    const artifactName = E.artifactName.value
-    const artifactImage = E.artifactImage.value
-    const artifactType = E.artifactType.value
-    const historicalContext = E.historicalContext.value
-    const createdAt = E.createdAt.value
-    const discoveredAt = E.discoveredAt.value
-    const presentLocation = E.presentLocation.value
-    const discoveredBy = E.discoveredBy.value
-
-
+    const E = e.target;
     const formData = {
-      artifactName,
-      artifactImage,
-      artifactType,
-      historicalContext,
-      createdAt,
-      discoveredAt,
-      presentLocation,
+      artifactName: E.artifactName.value,
+      artifactImage: E.artifactImage.value,
+      artifactType: E.artifactType.value,
+      historicalContext: E.historicalContext.value,
+      createdAt: E.createdAt.value,
+      discoveredAt: E.discoveredAt.value,
+      presentLocation: E.presentLocation.value,
+      discoveredBy: E.discoveredBy.value,
       adderInfo: {
-        name: modal.adderInfo.name,
-        email: modal.adderInfo.email
+        name: modalData.adderInfo.name,
+        email: modalData.adderInfo.email
       },
-      discoveredBy,
-      Like: modal.Like
+      Like: modalData.Like
     }
 
-
-    // console.log(formData)
-
-    // ----------------sending data to server---------------
-    fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${modal._id}`, {
+    fetch(`https://historical-artifacts-tracher-server.vercel.app/allcraft/${modalData._id}`, {
       method: "PUT",
       headers: {
         'content-type': "application/json"
@@ -119,286 +89,89 @@ const Myadded = () => {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         if (data.modifiedCount) {
           Swal.fire({
             title: 'Successful',
             text: 'Artifact Updated Properly.',
             icon: 'success',
             confirmButtonText: "It's Great"
-          })
+          });
         }
-        handleButtonClick()
-        revalidate()
-      })
+        handleCloseModal();
+        revalidate();
+      });
   }
 
-
-
-
   return (
-    <div>
-      <div>
-        {/* ----------TITLE TEXT-------------- */}
-        <div
-          className='text-center bg-[#fff59c7e] '>
-          <h1 className='text-3xl md:text-6xl font-bold py-5'>
-            My Added Artifacts.
-          </h1>
-
-          <h2 className="text-xl font-serif italic text-center my-3 font-semibold">Total Artifacts: {AllCraft.length}</h2>
-
-          <p className='md:pb-10 md:px-56 text-xs px-24 pb-6 md:text-lg'>
-            Here are all the artifacts that you added . Chose your Artifact to delete or update the information as needed.
-          </p>
-        </div>
-
-
-        {/* --------------------------all visa--------------------- */}
-        {AllCraft.length == 0 ? <div>
-          <h1 className='md:text-4xl text-2xl font-mono font-black text-center mt-10'>You added no artifacts</h1>
-          <img src={nodata} className='mx-auto w-1/2' />
-        </div> :
-          <div className="grid grid-cols-1 md:grid-cols-2 mx-10 md:mx-10 my-10">
-            {AllCraft.map(craft =>
-              <div
-                className=" shadow-md my-4  mx-2 border rounded-md p-2"
-                key={craft._id}>
-
-                <Fade duration={1600}>
-                  <div className='bg-[#feffbdc2] py-4'>
-                    <div className="w-full h-[200px] px-2 mx-auto">
-                      <img src={craft.artifactImage}
-                        className="w-full h-full object-cover rounded-xl shadow-xl border border-black mx-auto" />
-                    </div>
-
-                    <div >
-                      {/* ----------------------text-------------------------- */}
-                      <div className='md:py-5 text-center h-[200px]'>
-
-                        <p className='bg-white text-2xl font-black font-serif italic rounded-full mb-2 w-full'> {craft.artifactName}.</p>
-
-                        <h1 className=" font-bold"> Created at: {craft.createdAt}.</h1>
-
-                        <p className=" ">
-                          Type : {craft.artifactType}.
-                        </p>
-
-                        <p className="">
-                          Discoverd by : {craft.discoveredBy} .
-                        </p>
-
-                        <p className="">
-                          Location : {craft.presentLocation}.
-                        </p>
-
-                      </div>
-
-
-                      {/* --------------buttons---------------------- */}
-                      <div className="flex justify-center gap-5">
-
-                        {/*-----update */}
-
-                        <button onClick={() => {
-                          ModalData(craft._id)
-                          setModalOpen(true)
-                        }} className="btn btn-outline  text-xs btn-sm btn-success">
-                          Update
-                        </button>
-
-
-                        {/* -----delete */}
-                        <button onClick={() => handleRemove(craft._id)} className="btn btn-sm text-xs btn-error mx-2 md:mx-0 btn-outline">
-                          Delete
-                        </button>
-
-                        <Link to={`/All-Crafts/details/${craft._id}`}><button className="btn btn-sm text-xs btn-info mx-2 md:mx-0 btn-outline">Details
-                        </button></Link>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </Fade>
-
-
-                {modalOpen && <div
-                  className="top-0 left-0 fixed w-full h-full flex items-center justify-center bg-[#fff12736] backdrop-blur z-50"
-                >
-                  <div className="rounded  p-2 bg-white md:w-1/2 w-full m-4 md:m-0">
-
-                    <div className="mb-3 h-fit px-4 py-2">
-
-                      <div className='rounded-full p-1 '>
-                        <h2 className='text-xl font-bold text-center text-blue-600  '>Update Artifact information.</h2>
-                      </div>
-
-                      <form onSubmit={HandleUpdateArt} className="space-y-1">
-
-                        {/* artifactName */}
-                        <div>
-                          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                            Artifact Name
-                          </label>
-                          <input
-                            type="text"
-                            id="artifactName"
-                            name="artifactName"
-                            defaultValue={modal.artifactName}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 sm:text-sm"
-                            placeholder="Enter your Artifact name"
-                            required
-                          />
-                        </div>
-
-                        {/* artifactImage */}
-                        <div>
-                          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                            Artifact Image
-                          </label>
-                          <input
-                            type="url"
-                            id="artifactImage"
-                            name="artifactImage"
-                            defaultValue={modal.artifactImage}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 sm:text-sm"
-                            placeholder="Enter your Artifact Image link"
-                            required
-                          />
-                        </div>
-
-                        {/* artifactType */}
-                        <div>
-                          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                            Artifact Type
-                          </label>
-                          <select
-                            id="bxs"
-                            name="artifactType"
-                            defaultValue={modal.artifactType}
-                            className="rounded-lg text-sm text-gray-500 w-full" required>
-                            <option disabled>Select Your Artifact Type</option>
-                            <option>Tools</option>
-                            <option>Weapons</option>
-                            <option>Documents</option>
-                            <option>Writings</option>
-                            <option>Currency</option>
-                            <option>Historical Place</option>
-                          </select>
-                        </div>
-
-                        {/* discoveredBy */}
-                        <div>
-                          <label htmlFor="resume" className="block text-sm font-medium text-gray-700">
-                            Discovered By
-                          </label>
-                          <input
-                            type="text"
-                            id="li"
-                            name="discoveredBy"
-                            placeholder="Add who discoverd."
-                            defaultValue={modal.discoveredBy}
-                            className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-300 file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100 p-2 rounded-md"
-                            required
-                          />
-                        </div>
-
-                        {/* Historical Context*/}
-                        <div className="">
-                          <label className="block font-medium text-gray-700 ">Historical Context
-                          </label>
-                          <textarea
-                            id="historicalContext"
-                            name="historicalContext"
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-1"
-                            placeholder="Write historical Context of the craft"
-                            defaultValue={modal.historicalContext}
-                            required
-                          ></textarea>
-                        </div>
-
-                        {/* location */}
-                        <div>
-                          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                            Present Location
-                          </label>
-                          <input
-                            type="text"
-                            id="presentLocation"
-                            name="presentLocation"
-                            defaultValue={modal.presentLocation}
-                            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
-                            placeholder="Enter your present location of the art"
-                            required
-                          />
-                        </div>
-
-                        {/*  times  */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
-
-                          {/* Created at */}
-                          <div>
-                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                              Created At
-                            </label>
-                            <input
-                              type="text"
-                              id="createdAt"
-                              name="createdAt"
-                              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
-                              placeholder="Enter creation time. ' (e.g. 100 BC)' "
-                              defaultValue={modal.createdAt}
-                              required
-                            />
-                          </div>
-
-                          {/*  Discovered At  */}
-                          <div>
-                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                              Discovered At
-                            </label>
-                            <input
-                              type="text"
-                              id="discoveredAt"
-                              name="discoveredAt"
-                              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
-                              placeholder="Enter discoverd time. ' (e.g. 100 BC)' "
-                              required
-                              defaultValue={modal.discoveredAt}
-                            />
-                          </div>
-
-                        </div>
-
-
-                        {/* Submit Button */}
-                        <div className="flex gap-2 justify-center">
-
-                          <input
-                            type="submit"
-                            className="btn btn-sm btn-success mt-3"
-                            value={'Submit'}
-                          />
-                          <button
-                            className="btn btn-sm  btn-error mt-3"
-                            onClick={handleButtonClick}
-                          >
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>}
-
-
-
-              </div>)}
-          </div>}
+    <div className="bg-gradient-to-br from-[#334417] to-[#524d27] min-h-screen text-white px-4 py-8 rounded-2xl">
+      <div className="text-center">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-yellow-300">My Added Artifacts</h1>
+        <h2 className="text-xl italic font-medium text-yellow-100 mb-6">Total Artifacts: {AllCraft.length}</h2>
+        <p className="max-w-3xl mx-auto mb-10 text-sm md:text-lg text-gray-300">View, update, or delete the artifacts you’ve added to the archive. Thank you for contributing to historical discovery!</p>
       </div>
 
+      {AllCraft.length === 0 ? (
+        <div className="text-center">
+          <h1 className="text-2xl md:text-4xl font-bold">You added no artifacts</h1>
+          <img src={nodata} alt="No Data" className="mx-auto w-1/2 my-6 rounded-xl shadow-md" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {AllCraft.map(craft => (
+            <Fade key={craft._id} duration={1500}>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 shadow-lg">
+                <div className="w-full h-48 overflow-hidden rounded-xl mb-4">
+                  <img src={craft.artifactImage} alt={craft.artifactName} className="w-full h-full object-cover" />
+                </div>
+                <div className="space-y-1 mb-4 text-xs text-gray-100">
+                  <p className="text-xl font-bold text-yellow-300">{craft.artifactName}</p>
+                  <p><span className="font-semibold text-white">Created at:</span> {craft.createdAt}</p>
+                  <p><span className="font-semibold text-white">Type:</span> {craft.artifactType}</p>
+                  <p><span className="font-semibold text-white">Discovered by:</span> {craft.discoveredBy}</p>
+                  <p><span className="font-semibold text-white">Location:</span> {craft.presentLocation}</p>
+                </div>
+                <div className="flex justify-center gap-3">
+                  <button onClick={() => ModalData(craft._id)} className="btn btn-sm btn-outline btn-success text-white">Update</button>
+                  <button onClick={() => handleRemove(craft._id)} className="btn btn-sm btn-outline btn-error text-white">Delete</button>
+                  <Link to={`/All-Crafts/details/${craft._id}`} className="btn btn-sm btn-outline btn-info text-white">Details</Link>
+                </div>
+              </div>
+            </Fade>
+          ))}
+        </div>
+      )}
 
+      {modalData && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black/40 backdrop-blur-sm">
+          <div className="bg-white text-black rounded-xl p-6 max-w-2xl w-full overflow-y-auto max-h-[90vh]">
+            <h2 className="text-2xl font-bold text-center text-blue-600 mb-4">Update Artifact Information</h2>
+            <form onSubmit={HandleUpdateArt} className="space-y-4">
+              <input type="text" name="artifactName" defaultValue={modalData.artifactName} placeholder="Artifact Name" className="input input-bordered w-full" required />
+              <input type="url" name="artifactImage" defaultValue={modalData.artifactImage} placeholder="Artifact Image URL" className="input input-bordered w-full" required />
+              <select name="artifactType" defaultValue={modalData.artifactType} className="select select-bordered w-full" required>
+                <option disabled>Select Type</option>
+                <option>Tools</option>
+                <option>Weapons</option>
+                <option>Documents</option>
+                <option>Writings</option>
+                <option>Currency</option>
+                <option>Historical Place</option>
+              </select>
+              <input type="text" name="discoveredBy" defaultValue={modalData.discoveredBy} placeholder="Discovered By" className="input input-bordered w-full" required />
+              <textarea name="historicalContext" defaultValue={modalData.historicalContext} placeholder="Historical Context" className="textarea textarea-bordered w-full" required></textarea>
+              <input type="text" name="presentLocation" defaultValue={modalData.presentLocation} placeholder="Present Location" className="input input-bordered w-full" required />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="createdAt" defaultValue={modalData.createdAt} placeholder="Created At (e.g. 100 BC)" className="input input-bordered w-full" required />
+                <input type="text" name="discoveredAt" defaultValue={modalData.discoveredAt} placeholder="Discovered At (e.g. 100 BC)" className="input input-bordered w-full" required />
+              </div>
+              <div className="flex justify-end gap-3">
+                <button type="submit" className="btn btn-success btn-sm">Submit</button>
+                <button onClick={handleCloseModal} className="btn btn-error btn-sm">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
